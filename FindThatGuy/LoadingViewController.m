@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 ASU. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LoadingViewController.h"
 
-@interface ViewController ()
+@interface LoadingViewController ()
 
 @end
 
-@implementation ViewController
+@implementation LoadingViewController
 
 - (void)viewDidLoad
 {

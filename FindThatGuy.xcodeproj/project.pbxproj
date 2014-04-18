@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E14600691901DA9D00BC9AAB /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = E14600681901DA9D00BC9AAB /* Settings.m */; };
+		E146006C1901DC0100BC9AAB /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E146006B1901DC0100BC9AAB /* RegisterViewController.m */; };
+		E146006F1901DC2100BC9AAB /* FriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E146006E1901DC2100BC9AAB /* FriendsListViewController.m */; };
+		E14600721901DC3B00BC9AAB /* FindFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14600711901DC3B00BC9AAB /* FindFriendsViewController.m */; };
+		E14600751901DC6300BC9AAB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14600741901DC6300BC9AAB /* MapViewController.m */; };
 		E19A2ACE1901D31E0087DBB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19A2ACD1901D31E0087DBB6 /* Foundation.framework */; };
 		E19A2AD01901D31E0087DBB6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19A2ACF1901D31E0087DBB6 /* CoreGraphics.framework */; };
 		E19A2AD21901D31E0087DBB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19A2AD11901D31E0087DBB6 /* UIKit.framework */; };
@@ -14,7 +19,7 @@
 		E19A2ADA1901D31E0087DBB6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E19A2AD91901D31E0087DBB6 /* main.m */; };
 		E19A2ADE1901D31E0087DBB6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E19A2ADD1901D31E0087DBB6 /* AppDelegate.m */; };
 		E19A2AE11901D31F0087DBB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19A2ADF1901D31E0087DBB6 /* Main.storyboard */; };
-		E19A2AE41901D31F0087DBB6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19A2AE31901D31F0087DBB6 /* ViewController.m */; };
+		E19A2AE41901D31F0087DBB6 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19A2AE31901D31F0087DBB6 /* LoadingViewController.m */; };
 		E19A2AE61901D31F0087DBB6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E19A2AE51901D31F0087DBB6 /* Images.xcassets */; };
 		E19A2AED1901D31F0087DBB6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19A2AEC1901D31F0087DBB6 /* XCTest.framework */; };
 		E19A2AEE1901D31F0087DBB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19A2ACD1901D31E0087DBB6 /* Foundation.framework */; };
@@ -34,6 +39,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E14600671901DA9D00BC9AAB /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		E14600681901DA9D00BC9AAB /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		E146006A1901DC0100BC9AAB /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		E146006B1901DC0100BC9AAB /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		E146006D1901DC2100BC9AAB /* FriendsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsListViewController.h; sourceTree = "<group>"; };
+		E146006E1901DC2100BC9AAB /* FriendsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsListViewController.m; sourceTree = "<group>"; };
+		E14600701901DC3B00BC9AAB /* FindFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindFriendsViewController.h; sourceTree = "<group>"; };
+		E14600711901DC3B00BC9AAB /* FindFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindFriendsViewController.m; sourceTree = "<group>"; };
+		E14600731901DC6300BC9AAB /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		E14600741901DC6300BC9AAB /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		E19A2ACA1901D31E0087DBB6 /* FindThatGuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindThatGuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E19A2ACD1901D31E0087DBB6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E19A2ACF1901D31E0087DBB6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -45,8 +60,8 @@
 		E19A2ADC1901D31E0087DBB6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E19A2ADD1901D31E0087DBB6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E19A2AE01901D31E0087DBB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E19A2AE21901D31F0087DBB6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E19A2AE31901D31F0087DBB6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E19A2AE21901D31F0087DBB6 /* LoadingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
+		E19A2AE31901D31F0087DBB6 /* LoadingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
 		E19A2AE51901D31F0087DBB6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E19A2AEB1901D31F0087DBB6 /* FindThatGuyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindThatGuyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E19A2AEC1901D31F0087DBB6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -79,6 +94,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E14600641901D6B600BC9AAB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E14600671901DA9D00BC9AAB /* Settings.h */,
+				E14600681901DA9D00BC9AAB /* Settings.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E14600651901D6BE00BC9AAB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E19A2AE21901D31F0087DBB6 /* LoadingViewController.h */,
+				E19A2AE31901D31F0087DBB6 /* LoadingViewController.m */,
+				E146006A1901DC0100BC9AAB /* RegisterViewController.h */,
+				E146006B1901DC0100BC9AAB /* RegisterViewController.m */,
+				E146006D1901DC2100BC9AAB /* FriendsListViewController.h */,
+				E146006E1901DC2100BC9AAB /* FriendsListViewController.m */,
+				E14600701901DC3B00BC9AAB /* FindFriendsViewController.h */,
+				E14600711901DC3B00BC9AAB /* FindFriendsViewController.m */,
+				E14600731901DC6300BC9AAB /* MapViewController.h */,
+				E14600741901DC6300BC9AAB /* MapViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		E19A2AC11901D31E0087DBB6 = {
 			isa = PBXGroup;
 			children = (
@@ -112,11 +153,11 @@
 		E19A2AD31901D31E0087DBB6 /* FindThatGuy */ = {
 			isa = PBXGroup;
 			children = (
+				E14600651901D6BE00BC9AAB /* Controllers */,
+				E14600641901D6B600BC9AAB /* Models */,
 				E19A2ADC1901D31E0087DBB6 /* AppDelegate.h */,
 				E19A2ADD1901D31E0087DBB6 /* AppDelegate.m */,
 				E19A2ADF1901D31E0087DBB6 /* Main.storyboard */,
-				E19A2AE21901D31F0087DBB6 /* ViewController.h */,
-				E19A2AE31901D31F0087DBB6 /* ViewController.m */,
 				E19A2AE51901D31F0087DBB6 /* Images.xcassets */,
 				E19A2AD41901D31E0087DBB6 /* Supporting Files */,
 			);
@@ -249,9 +290,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E19A2AE41901D31F0087DBB6 /* ViewController.m in Sources */,
+				E14600721901DC3B00BC9AAB /* FindFriendsViewController.m in Sources */,
+				E146006F1901DC2100BC9AAB /* FriendsListViewController.m in Sources */,
+				E146006C1901DC0100BC9AAB /* RegisterViewController.m in Sources */,
+				E14600751901DC6300BC9AAB /* MapViewController.m in Sources */,
+				E19A2AE41901D31F0087DBB6 /* LoadingViewController.m in Sources */,
 				E19A2ADE1901D31E0087DBB6 /* AppDelegate.m in Sources */,
 				E19A2ADA1901D31E0087DBB6 /* main.m in Sources */,
+				E14600691901DA9D00BC9AAB /* Settings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +502,7 @@
 				E19A2AFE1901D31F0087DBB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E19A2AFF1901D31F0087DBB6 /* Build configuration list for PBXNativeTarget "FindThatGuyTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +511,7 @@
 				E19A2B011901D31F0087DBB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

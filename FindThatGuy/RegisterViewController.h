@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  RegisterViewController.h
 //  FindThatGuy
 //
 //  Created by Brentton Garber on 4/18/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface RegisterViewController : UIViewController
 
 @end
