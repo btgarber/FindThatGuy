@@ -1,0 +1,471 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E19A2ACE1901D31E0087DBB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19A2ACD1901D31E0087DBB6 /* Foundation.framework */; };
+		E19A2AD01901D31E0087DBB6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19A2ACF1901D31E0087DBB6 /* CoreGraphics.framework */; };
+		E19A2AD21901D31E0087DBB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19A2AD11901D31E0087DBB6 /* UIKit.framework */; };
+		E19A2AD81901D31E0087DBB6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E19A2AD61901D31E0087DBB6 /* InfoPlist.strings */; };
+		E19A2ADA1901D31E0087DBB6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E19A2AD91901D31E0087DBB6 /* main.m */; };
+		E19A2ADE1901D31E0087DBB6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E19A2ADD1901D31E0087DBB6 /* AppDelegate.m */; };
+		E19A2AE11901D31F0087DBB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19A2ADF1901D31E0087DBB6 /* Main.storyboard */; };
+		E19A2AE41901D31F0087DBB6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19A2AE31901D31F0087DBB6 /* ViewController.m */; };
+		E19A2AE61901D31F0087DBB6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E19A2AE51901D31F0087DBB6 /* Images.xcassets */; };
+		E19A2AED1901D31F0087DBB6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19A2AEC1901D31F0087DBB6 /* XCTest.framework */; };
+		E19A2AEE1901D31F0087DBB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19A2ACD1901D31E0087DBB6 /* Foundation.framework */; };
+		E19A2AEF1901D31F0087DBB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19A2AD11901D31E0087DBB6 /* UIKit.framework */; };
+		E19A2AF71901D31F0087DBB6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E19A2AF51901D31F0087DBB6 /* InfoPlist.strings */; };
+		E19A2AF91901D31F0087DBB6 /* FindThatGuyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E19A2AF81901D31F0087DBB6 /* FindThatGuyTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E19A2AF01901D31F0087DBB6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E19A2AC21901D31E0087DBB6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E19A2AC91901D31E0087DBB6;
+			remoteInfo = FindThatGuy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E19A2ACA1901D31E0087DBB6 /* FindThatGuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindThatGuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E19A2ACD1901D31E0087DBB6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E19A2ACF1901D31E0087DBB6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E19A2AD11901D31E0087DBB6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E19A2AD51901D31E0087DBB6 /* FindThatGuy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FindThatGuy-Info.plist"; sourceTree = "<group>"; };
+		E19A2AD71901D31E0087DBB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E19A2AD91901D31E0087DBB6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E19A2ADB1901D31E0087DBB6 /* FindThatGuy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FindThatGuy-Prefix.pch"; sourceTree = "<group>"; };
+		E19A2ADC1901D31E0087DBB6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E19A2ADD1901D31E0087DBB6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E19A2AE01901D31E0087DBB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E19A2AE21901D31F0087DBB6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E19A2AE31901D31F0087DBB6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E19A2AE51901D31F0087DBB6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E19A2AEB1901D31F0087DBB6 /* FindThatGuyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindThatGuyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E19A2AEC1901D31F0087DBB6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		E19A2AF41901D31F0087DBB6 /* FindThatGuyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FindThatGuyTests-Info.plist"; sourceTree = "<group>"; };
+		E19A2AF61901D31F0087DBB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E19A2AF81901D31F0087DBB6 /* FindThatGuyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindThatGuyTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E19A2AC71901D31E0087DBB6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E19A2AD01901D31E0087DBB6 /* CoreGraphics.framework in Frameworks */,
+				E19A2AD21901D31E0087DBB6 /* UIKit.framework in Frameworks */,
+				E19A2ACE1901D31E0087DBB6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E19A2AE81901D31F0087DBB6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E19A2AED1901D31F0087DBB6 /* XCTest.framework in Frameworks */,
+				E19A2AEF1901D31F0087DBB6 /* UIKit.framework in Frameworks */,
+				E19A2AEE1901D31F0087DBB6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E19A2AC11901D31E0087DBB6 = {
+			isa = PBXGroup;
+			children = (
+				E19A2AD31901D31E0087DBB6 /* FindThatGuy */,
+				E19A2AF21901D31F0087DBB6 /* FindThatGuyTests */,
+				E19A2ACC1901D31E0087DBB6 /* Frameworks */,
+				E19A2ACB1901D31E0087DBB6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E19A2ACB1901D31E0087DBB6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E19A2ACA1901D31E0087DBB6 /* FindThatGuy.app */,
+				E19A2AEB1901D31F0087DBB6 /* FindThatGuyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E19A2ACC1901D31E0087DBB6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E19A2ACD1901D31E0087DBB6 /* Foundation.framework */,
+				E19A2ACF1901D31E0087DBB6 /* CoreGraphics.framework */,
+				E19A2AD11901D31E0087DBB6 /* UIKit.framework */,
+				E19A2AEC1901D31F0087DBB6 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E19A2AD31901D31E0087DBB6 /* FindThatGuy */ = {
+			isa = PBXGroup;
+			children = (
+				E19A2ADC1901D31E0087DBB6 /* AppDelegate.h */,
+				E19A2ADD1901D31E0087DBB6 /* AppDelegate.m */,
+				E19A2ADF1901D31E0087DBB6 /* Main.storyboard */,
+				E19A2AE21901D31F0087DBB6 /* ViewController.h */,
+				E19A2AE31901D31F0087DBB6 /* ViewController.m */,
+				E19A2AE51901D31F0087DBB6 /* Images.xcassets */,
+				E19A2AD41901D31E0087DBB6 /* Supporting Files */,
+			);
+			path = FindThatGuy;
+			sourceTree = "<group>";
+		};
+		E19A2AD41901D31E0087DBB6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E19A2AD51901D31E0087DBB6 /* FindThatGuy-Info.plist */,
+				E19A2AD61901D31E0087DBB6 /* InfoPlist.strings */,
+				E19A2AD91901D31E0087DBB6 /* main.m */,
+				E19A2ADB1901D31E0087DBB6 /* FindThatGuy-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E19A2AF21901D31F0087DBB6 /* FindThatGuyTests */ = {
+			isa = PBXGroup;
+			children = (
+				E19A2AF81901D31F0087DBB6 /* FindThatGuyTests.m */,
+				E19A2AF31901D31F0087DBB6 /* Supporting Files */,
+			);
+			path = FindThatGuyTests;
+			sourceTree = "<group>";
+		};
+		E19A2AF31901D31F0087DBB6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E19A2AF41901D31F0087DBB6 /* FindThatGuyTests-Info.plist */,
+				E19A2AF51901D31F0087DBB6 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E19A2AC91901D31E0087DBB6 /* FindThatGuy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E19A2AFC1901D31F0087DBB6 /* Build configuration list for PBXNativeTarget "FindThatGuy" */;
+			buildPhases = (
+				E19A2AC61901D31E0087DBB6 /* Sources */,
+				E19A2AC71901D31E0087DBB6 /* Frameworks */,
+				E19A2AC81901D31E0087DBB6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FindThatGuy;
+			productName = FindThatGuy;
+			productReference = E19A2ACA1901D31E0087DBB6 /* FindThatGuy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E19A2AEA1901D31F0087DBB6 /* FindThatGuyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E19A2AFF1901D31F0087DBB6 /* Build configuration list for PBXNativeTarget "FindThatGuyTests" */;
+			buildPhases = (
+				E19A2AE71901D31F0087DBB6 /* Sources */,
+				E19A2AE81901D31F0087DBB6 /* Frameworks */,
+				E19A2AE91901D31F0087DBB6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E19A2AF11901D31F0087DBB6 /* PBXTargetDependency */,
+			);
+			name = FindThatGuyTests;
+			productName = FindThatGuyTests;
+			productReference = E19A2AEB1901D31F0087DBB6 /* FindThatGuyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E19A2AC21901D31E0087DBB6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = ASU;
+				TargetAttributes = {
+					E19A2AEA1901D31F0087DBB6 = {
+						TestTargetID = E19A2AC91901D31E0087DBB6;
+					};
+				};
+			};
+			buildConfigurationList = E19A2AC51901D31E0087DBB6 /* Build configuration list for PBXProject "FindThatGuy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E19A2AC11901D31E0087DBB6;
+			productRefGroup = E19A2ACB1901D31E0087DBB6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E19A2AC91901D31E0087DBB6 /* FindThatGuy */,
+				E19A2AEA1901D31F0087DBB6 /* FindThatGuyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E19A2AC81901D31E0087DBB6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E19A2AE61901D31F0087DBB6 /* Images.xcassets in Resources */,
+				E19A2AD81901D31E0087DBB6 /* InfoPlist.strings in Resources */,
+				E19A2AE11901D31F0087DBB6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E19A2AE91901D31F0087DBB6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E19A2AF71901D31F0087DBB6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E19A2AC61901D31E0087DBB6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E19A2AE41901D31F0087DBB6 /* ViewController.m in Sources */,
+				E19A2ADE1901D31E0087DBB6 /* AppDelegate.m in Sources */,
+				E19A2ADA1901D31E0087DBB6 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E19A2AE71901D31F0087DBB6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E19A2AF91901D31F0087DBB6 /* FindThatGuyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E19A2AF11901D31F0087DBB6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E19A2AC91901D31E0087DBB6 /* FindThatGuy */;
+			targetProxy = E19A2AF01901D31F0087DBB6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E19A2AD61901D31E0087DBB6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E19A2AD71901D31E0087DBB6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E19A2ADF1901D31E0087DBB6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E19A2AE01901D31E0087DBB6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E19A2AF51901D31F0087DBB6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E19A2AF61901D31F0087DBB6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E19A2AFA1901D31F0087DBB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E19A2AFB1901D31F0087DBB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E19A2AFD1901D31F0087DBB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FindThatGuy/FindThatGuy-Prefix.pch";
+				INFOPLIST_FILE = "FindThatGuy/FindThatGuy-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E19A2AFE1901D31F0087DBB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FindThatGuy/FindThatGuy-Prefix.pch";
+				INFOPLIST_FILE = "FindThatGuy/FindThatGuy-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E19A2B001901D31F0087DBB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FindThatGuy.app/FindThatGuy";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FindThatGuy/FindThatGuy-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "FindThatGuyTests/FindThatGuyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		E19A2B011901D31F0087DBB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FindThatGuy.app/FindThatGuy";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FindThatGuy/FindThatGuy-Prefix.pch";
+				INFOPLIST_FILE = "FindThatGuyTests/FindThatGuyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E19A2AC51901D31E0087DBB6 /* Build configuration list for PBXProject "FindThatGuy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E19A2AFA1901D31F0087DBB6 /* Debug */,
+				E19A2AFB1901D31F0087DBB6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E19A2AFC1901D31F0087DBB6 /* Build configuration list for PBXNativeTarget "FindThatGuy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E19A2AFD1901D31F0087DBB6 /* Debug */,
+				E19A2AFE1901D31F0087DBB6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E19A2AFF1901D31F0087DBB6 /* Build configuration list for PBXNativeTarget "FindThatGuyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E19A2B001901D31F0087DBB6 /* Debug */,
+				E19A2B011901D31F0087DBB6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E19A2AC21901D31E0087DBB6 /* Project object */;
+}
