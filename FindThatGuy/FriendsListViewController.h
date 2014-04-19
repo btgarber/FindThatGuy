@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
+#import "Friend.h"
+#import "FriendsListCell.h"
 
 @interface FriendsListViewController : UITableViewController
+@property (strong, nonatomic) IBOutlet UITableView *friendsTable;
 
 @end

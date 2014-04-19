@@ -47,7 +47,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="63" id="DIq-Xb-E08" customClass="FriendsListCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendsListCell" rowHeight="63" id="DIq-Xb-E08" customClass="FriendsListCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DIq-Xb-E08" id="h0h-WD-mJr">
@@ -70,6 +70,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="city" destination="yNK-sD-ejW" id="Ca9-wG-dnP"/>
+                                    <outlet property="name" destination="Scl-T0-o3H" id="aTV-wk-lL3"/>
                                     <segue destination="rMo-jU-jN9" kind="push" id="fZ4-ef-yZq"/>
                                 </connections>
                             </tableViewCell>
@@ -86,6 +88,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="friendsTable" destination="Qdv-0X-hNx" id="rJ4-fh-Nvs"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P5Q-1A-ROz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

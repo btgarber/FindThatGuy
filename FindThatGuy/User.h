@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
-#import "Friend.h"
+#import "User.h"
 
 #define FIRSTNAME @"FIRSTNAME"
 #define LASTNAME @"LASTNAME"

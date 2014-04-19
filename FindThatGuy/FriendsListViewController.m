@@ -32,8 +32,10 @@
     [Friend AddFriend:[[User sharedUser] ident] withUser:@"d8vBGkdiTj"];*/
     
     [Friend LoadFriends: [User sharedUser] withCallback:^{
-        
+        NSLog(@"%@",[[[User sharedUser] friendLinks] description]);
+        [self.friendsTable reloadData];
     }];
+    NSLog(@"%@",[[[User sharedUser] friendLinks] description]);
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -60,16 +62,19 @@
     return [[[User sharedUser] friendLinks] count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    FriendsListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsListCell" forIndexPath:indexPath];
+    if(cell == nil)
+        cell = [[FriendsListCell alloc] init];
     
-    // Configure the cell...
-    
+    Friend *friend = [[[User sharedUser] friendLinks] objectAtIndex:indexPath.row];
+    [cell.name setText: [friend.user FullName]];
+    [cell.city setText: [friend.approved description]];
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

@@ -48,7 +48,7 @@
             [friend setApproved:[object objectForKey: APPROVED]];
             [user.friendLinks addObject: friend];
         }
-        if(callback != nil) callback ;
+        if(callback != nil) callback();
     }];
 }
 

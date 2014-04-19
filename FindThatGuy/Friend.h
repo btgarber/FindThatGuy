@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
+
 #import "User.h"
 
 #define FRIEND @"FRIEND"
@@ -18,7 +19,7 @@
 typedef void (^FriendsLoadedBlock) ();
 
 @property(nonatomic)NSString *ident;
-@property(nonatomic, retain)User *user;
+@property(nonatomic)User *user;
 @property(nonatomic)NSString *approved;
 
 
