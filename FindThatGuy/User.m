@@ -16,7 +16,7 @@ static User* theUser = nil;
 {
     if((self = [super init]) != nil)
     {
-        
+        self.friendLinks = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -30,6 +30,7 @@ static User* theUser = nil;
         self.lastname = [pf objectForKey: LASTNAME];
         self.phonenumber = [pf objectForKey: PHONENUMBER];
         self.email = [pf objectForKey: EMAIL];
+        self.friendLinks = [[NSMutableArray alloc] init];
     }
     return self;
 }

@@ -27,6 +27,13 @@
 {
     [super viewDidLoad];
     self.title = [[User sharedUser] FullName];
+    /*[Friend AddFriend:[[User sharedUser] ident] withUser:@"Y1s1Agw6Ej"];
+    [Friend AddFriend:[[User sharedUser] ident] withUser:@"e9v2KFuIMr"];
+    [Friend AddFriend:[[User sharedUser] ident] withUser:@"d8vBGkdiTj"];*/
+    
+    [Friend LoadFriends: [User sharedUser] withCallback:^{
+        
+    }];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -50,7 +57,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [[[User sharedUser] friendLinks] count];
 }
 
 /*
