@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 
-#import "User.h"
+@class User;
 
 #define FRIEND @"FRIEND"
 #define APPROVED @"APPROVED"
@@ -20,9 +20,10 @@ typedef void (^FriendsLoadedBlock) ();
 
 @property(nonatomic)NSString *ident;
 @property(nonatomic)User *user;
-@property(nonatomic)NSString *approved;
+@property(nonatomic)BOOL approved;
 
 
 +(void)AddFriend:(NSString*)user withUser:(NSString*) link;
 +(void)LoadFriends:(User*)user withCallback:(FriendsLoadedBlock) callback;
 @end
+

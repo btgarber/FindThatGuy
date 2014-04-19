@@ -67,7 +67,7 @@
     
     Friend *friend = [[[User sharedUser] friendLinks] objectAtIndex:indexPath.row];
     [cell.name setText: [friend.user FullName]];
-    [cell.city setText: [friend.approved description]];
+    [cell.city setText: [NSString stringWithFormat:@"%i", friend.approved]];
     return cell;
 }
 

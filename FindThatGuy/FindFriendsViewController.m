@@ -84,10 +84,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"defaultCell" forIndexPath:indexPath];
+    FindFriendsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FindFriendsCell" forIndexPath:indexPath];
     User *result = [self.friendsList objectAtIndex:indexPath.row];
-    [[cell textLabel] setText: [result FullName]];
+    Friend *friend = [[User sharedUser] hasFriend: result];
     
+    [[cell name] setText: [result FullName]];
+    
+    if(friend == nil)
+        [[cell status] setText: @""];
+    else if(friend.approved == YES)
+        [[cell status] setText: @"Approved"];
+    else if(friend.approved == NO)
+        [[cell status] setText: @"Pending"];
     return cell;
 }
 
@@ -100,8 +108,8 @@
         {
             PFQuery *sub_firstname = [PFQuery queryWithClassName: USER];
             PFQuery *sub_lastname = [PFQuery queryWithClassName: USER];
-            [sub_firstname whereKey: FIRSTNAME containsString: part];
-            [sub_lastname whereKey: LASTNAME containsString: part];
+            [sub_firstname whereKey: FIRSTNAME matchesRegex:[NSString stringWithFormat:@".*%@.*", part]modifiers:@"i"];
+            [sub_lastname whereKey: LASTNAME matchesRegex:[NSString stringWithFormat:@".*%@.*", part] modifiers:@"i"];
             [queries addObject: sub_firstname];
             [queries addObject: sub_lastname];
         }
@@ -110,12 +118,12 @@
     
     if(type == T_EMAIL) {
         query = [PFQuery queryWithClassName: USER];
-        [query whereKey: EMAIL containsString: searchText];
+        [query whereKey: EMAIL matchesRegex:[NSString stringWithFormat:@".*%@.*", searchText] modifiers:@"i"];
     }
     
     if(type == T_PHONE) {
         query = [PFQuery queryWithClassName: USER];
-        [query whereKey: PHONENUMBER containsString: searchText];
+        [query whereKey: PHONENUMBER matchesRegex:[NSString stringWithFormat:@".*%@.*", searchText] modifiers:@"i"];
     }
     
     [query setLimit: 20];

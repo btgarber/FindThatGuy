@@ -7,8 +7,19 @@
 //
 
 #import "Friend.h"
+#import "User.h"
 
 @implementation Friend
+
+-(id)init
+{
+    if((self = [super init]) != nil)
+    {
+        self.user = nil;
+        self.approved = NO;
+    }
+    return self;
+}
 
 -(void)ApproveFriend
 {
@@ -45,7 +56,7 @@
             Friend *friend = [[Friend alloc] init];
             [friend setIdent: [object objectId]];
             [friend setUser: [[User alloc] initWithPFObject: [object objectForKey: FRIEND]]];
-            [friend setApproved:[object objectForKey: APPROVED]];
+            [friend setApproved: [[object objectForKey: APPROVED] boolValue]];
             [user.friendLinks addObject: friend];
         }
         if(callback != nil) callback();

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
+#import "Friend.h"
+#import "FindFriendsCell.h"
 
 #define T_NAME 1
 #define T_EMAIL 2

@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
-#import "User.h"
+
+@class Friend;
 
 #define FIRSTNAME @"FIRSTNAME"
 #define LASTNAME @"LASTNAME"
@@ -29,6 +30,7 @@
 -(id)initWithPFObject:(PFObject*) pf;
 -(PFObject*)GetPFObject;
 -(NSString*)FullName;
+-(Friend*)hasFriend:(User*) user;
 
 +(NSString*) getDeviceIdentifier;
 +(void) setDeviceIdentifier:(NSString*) ident;
@@ -36,3 +38,4 @@
 +(User*)sharedUser:(User*)user;
 
 @end
+

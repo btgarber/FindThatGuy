@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import "Friend.h"
 
 @implementation User
 
@@ -49,6 +50,15 @@ static User* theUser = nil;
     return [NSString stringWithFormat:@"%@ %@", self.firstname, self.lastname];
 }
 
+-(Friend*)hasFriend:(User*) user
+{
+    for (Friend *friend in self.friendLinks)
+    {
+        if([self.ident isEqualToString: [friend.user ident]])
+            return friend;
+    }
+    return nil;
+}
 
 +(User*)sharedUser {
     if(theUser == nil) {

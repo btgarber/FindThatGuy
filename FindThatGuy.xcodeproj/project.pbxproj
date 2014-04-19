@@ -38,6 +38,7 @@
 		E19A2AEF1901D31F0087DBB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19A2AD11901D31E0087DBB6 /* UIKit.framework */; };
 		E19A2AF71901D31F0087DBB6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E19A2AF51901D31F0087DBB6 /* InfoPlist.strings */; };
 		E19A2AF91901D31F0087DBB6 /* FindThatGuyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E19A2AF81901D31F0087DBB6 /* FindThatGuyTests.m */; };
+		E19B3EA819031EF900457AF3 /* FindFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E19B3EA719031EF900457AF3 /* FindFriendsCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,8 @@
 		E19A2AF41901D31F0087DBB6 /* FindThatGuyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FindThatGuyTests-Info.plist"; sourceTree = "<group>"; };
 		E19A2AF61901D31F0087DBB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E19A2AF81901D31F0087DBB6 /* FindThatGuyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindThatGuyTests.m; sourceTree = "<group>"; };
+		E19B3EA619031EF900457AF3 /* FindFriendsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindFriendsCell.h; sourceTree = "<group>"; };
+		E19B3EA719031EF900457AF3 /* FindFriendsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindFriendsCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +159,8 @@
 				E14600741901DC6300BC9AAB /* MapViewController.m */,
 				E14600761901E8C000BC9AAB /* FriendsListCell.h */,
 				E14600771901E8C000BC9AAB /* FriendsListCell.m */,
+				E19B3EA619031EF900457AF3 /* FindFriendsCell.h */,
+				E19B3EA719031EF900457AF3 /* FindFriendsCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -347,6 +352,7 @@
 				E146006C1901DC0100BC9AAB /* RegisterViewController.m in Sources */,
 				E14600751901DC6300BC9AAB /* MapViewController.m in Sources */,
 				E19A2AE41901D31F0087DBB6 /* LoadingViewController.m in Sources */,
+				E19B3EA819031EF900457AF3 /* FindFriendsCell.m in Sources */,
 				E19A2ADE1901D31E0087DBB6 /* AppDelegate.m in Sources */,
 				E19A2ADA1901D31E0087DBB6 /* main.m in Sources */,
 				E14600691901DA9D00BC9AAB /* User.m in Sources */,
