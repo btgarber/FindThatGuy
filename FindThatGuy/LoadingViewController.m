@@ -17,7 +17,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+
+    NSString *ident = [User getDeviceIdentifier];
+    if(ident == NULL)
+    {
+        [self performSegueWithIdentifier:@"register" sender:self];
+    }
+    else
+    {
+        PFQuery *query = [PFQuery queryWithClassName:@"USER"]; // 1
+        [query getObjectInBackgroundWithId: ident block:^(PFObject  *pf, NSError *error) {
+            User *user = [[User alloc] initWithPFObject:pf];
+            [User sharedUser: user];
+            
+            [self performSegueWithIdentifier:@"mainView" sender:self];
+        }];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -7,11 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E14600691901DA9D00BC9AAB /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = E14600681901DA9D00BC9AAB /* Settings.m */; };
+		E14600691901DA9D00BC9AAB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E14600681901DA9D00BC9AAB /* User.m */; };
 		E146006C1901DC0100BC9AAB /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E146006B1901DC0100BC9AAB /* RegisterViewController.m */; };
 		E146006F1901DC2100BC9AAB /* FriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E146006E1901DC2100BC9AAB /* FriendsListViewController.m */; };
 		E14600721901DC3B00BC9AAB /* FindFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14600711901DC3B00BC9AAB /* FindFriendsViewController.m */; };
 		E14600751901DC6300BC9AAB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14600741901DC6300BC9AAB /* MapViewController.m */; };
+		E14600781901E8C000BC9AAB /* FriendsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E14600771901E8C000BC9AAB /* FriendsListCell.m */; };
+		E14600831901F73D00BC9AAB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14600821901F73D00BC9AAB /* Parse.framework */; };
+		E14600851901F75100BC9AAB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14600841901F75100BC9AAB /* AudioToolbox.framework */; };
+		E14600871901F76200BC9AAB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14600861901F76200BC9AAB /* CFNetwork.framework */; };
+		E14600891901F77300BC9AAB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14600881901F77300BC9AAB /* CoreLocation.framework */; };
+		E146008B1901F78100BC9AAB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E146008A1901F78100BC9AAB /* libz.dylib */; };
+		E146008D1901F78A00BC9AAB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E146008C1901F78A00BC9AAB /* MobileCoreServices.framework */; };
+		E146008F1901F79200BC9AAB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E146008E1901F79200BC9AAB /* QuartzCore.framework */; };
+		E14600911901F79900BC9AAB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14600901901F79900BC9AAB /* Security.framework */; };
+		E14600931901F7A000BC9AAB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14600921901F7A000BC9AAB /* StoreKit.framework */; };
+		E14600951901F7A900BC9AAB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14600941901F7A900BC9AAB /* SystemConfiguration.framework */; };
 		E19A2ACE1901D31E0087DBB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19A2ACD1901D31E0087DBB6 /* Foundation.framework */; };
 		E19A2AD01901D31E0087DBB6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19A2ACF1901D31E0087DBB6 /* CoreGraphics.framework */; };
 		E19A2AD21901D31E0087DBB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19A2AD11901D31E0087DBB6 /* UIKit.framework */; };
@@ -39,8 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E14600671901DA9D00BC9AAB /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
-		E14600681901DA9D00BC9AAB /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		E14600671901DA9D00BC9AAB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		E14600681901DA9D00BC9AAB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		E146006A1901DC0100BC9AAB /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		E146006B1901DC0100BC9AAB /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		E146006D1901DC2100BC9AAB /* FriendsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsListViewController.h; sourceTree = "<group>"; };
@@ -49,6 +60,18 @@
 		E14600711901DC3B00BC9AAB /* FindFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindFriendsViewController.m; sourceTree = "<group>"; };
 		E14600731901DC6300BC9AAB /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		E14600741901DC6300BC9AAB /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		E14600761901E8C000BC9AAB /* FriendsListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsListCell.h; sourceTree = "<group>"; };
+		E14600771901E8C000BC9AAB /* FriendsListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsListCell.m; sourceTree = "<group>"; };
+		E14600821901F73D00BC9AAB /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = FindThatGuy/Parse.framework; sourceTree = "<group>"; };
+		E14600841901F75100BC9AAB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E14600861901F76200BC9AAB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E14600881901F77300BC9AAB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E146008A1901F78100BC9AAB /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		E146008C1901F78A00BC9AAB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		E146008E1901F79200BC9AAB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E14600901901F79900BC9AAB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		E14600921901F7A000BC9AAB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		E14600941901F7A900BC9AAB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E19A2ACA1901D31E0087DBB6 /* FindThatGuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindThatGuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E19A2ACD1901D31E0087DBB6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E19A2ACF1901D31E0087DBB6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -75,7 +98,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E14600951901F7A900BC9AAB /* SystemConfiguration.framework in Frameworks */,
+				E14600931901F7A000BC9AAB /* StoreKit.framework in Frameworks */,
+				E14600911901F79900BC9AAB /* Security.framework in Frameworks */,
+				E146008F1901F79200BC9AAB /* QuartzCore.framework in Frameworks */,
+				E146008D1901F78A00BC9AAB /* MobileCoreServices.framework in Frameworks */,
+				E146008B1901F78100BC9AAB /* libz.dylib in Frameworks */,
+				E14600891901F77300BC9AAB /* CoreLocation.framework in Frameworks */,
 				E19A2AD01901D31E0087DBB6 /* CoreGraphics.framework in Frameworks */,
+				E14600871901F76200BC9AAB /* CFNetwork.framework in Frameworks */,
+				E14600851901F75100BC9AAB /* AudioToolbox.framework in Frameworks */,
+				E14600831901F73D00BC9AAB /* Parse.framework in Frameworks */,
 				E19A2AD21901D31E0087DBB6 /* UIKit.framework in Frameworks */,
 				E19A2ACE1901D31E0087DBB6 /* Foundation.framework in Frameworks */,
 			);
@@ -97,8 +130,8 @@
 		E14600641901D6B600BC9AAB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E14600671901DA9D00BC9AAB /* Settings.h */,
-				E14600681901DA9D00BC9AAB /* Settings.m */,
+				E14600671901DA9D00BC9AAB /* User.h */,
+				E14600681901DA9D00BC9AAB /* User.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -116,6 +149,8 @@
 				E14600711901DC3B00BC9AAB /* FindFriendsViewController.m */,
 				E14600731901DC6300BC9AAB /* MapViewController.h */,
 				E14600741901DC6300BC9AAB /* MapViewController.m */,
+				E14600761901E8C000BC9AAB /* FriendsListCell.h */,
+				E14600771901E8C000BC9AAB /* FriendsListCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -142,6 +177,16 @@
 		E19A2ACC1901D31E0087DBB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E14600941901F7A900BC9AAB /* SystemConfiguration.framework */,
+				E14600921901F7A000BC9AAB /* StoreKit.framework */,
+				E14600901901F79900BC9AAB /* Security.framework */,
+				E146008E1901F79200BC9AAB /* QuartzCore.framework */,
+				E146008C1901F78A00BC9AAB /* MobileCoreServices.framework */,
+				E146008A1901F78100BC9AAB /* libz.dylib */,
+				E14600881901F77300BC9AAB /* CoreLocation.framework */,
+				E14600861901F76200BC9AAB /* CFNetwork.framework */,
+				E14600841901F75100BC9AAB /* AudioToolbox.framework */,
+				E14600821901F73D00BC9AAB /* Parse.framework */,
 				E19A2ACD1901D31E0087DBB6 /* Foundation.framework */,
 				E19A2ACF1901D31E0087DBB6 /* CoreGraphics.framework */,
 				E19A2AD11901D31E0087DBB6 /* UIKit.framework */,
@@ -292,12 +337,13 @@
 			files = (
 				E14600721901DC3B00BC9AAB /* FindFriendsViewController.m in Sources */,
 				E146006F1901DC2100BC9AAB /* FriendsListViewController.m in Sources */,
+				E14600781901E8C000BC9AAB /* FriendsListCell.m in Sources */,
 				E146006C1901DC0100BC9AAB /* RegisterViewController.m in Sources */,
 				E14600751901DC6300BC9AAB /* MapViewController.m in Sources */,
 				E19A2AE41901D31F0087DBB6 /* LoadingViewController.m in Sources */,
 				E19A2ADE1901D31E0087DBB6 /* AppDelegate.m in Sources */,
 				E19A2ADA1901D31E0087DBB6 /* main.m in Sources */,
-				E14600691901DA9D00BC9AAB /* Settings.m in Sources */,
+				E14600691901DA9D00BC9AAB /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +468,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/FindThatGuy",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FindThatGuy/FindThatGuy-Prefix.pch";
 				INFOPLIST_FILE = "FindThatGuy/FindThatGuy-Info.plist";
@@ -435,6 +486,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/FindThatGuy",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FindThatGuy/FindThatGuy-Prefix.pch";
 				INFOPLIST_FILE = "FindThatGuy/FindThatGuy-Info.plist";
