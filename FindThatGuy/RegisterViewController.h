@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface RegisterViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UITextField *firstname;
+@property (weak, nonatomic) IBOutlet UITextField *lastname;
+@property (weak, nonatomic) IBOutlet UITextField *phonenumber;
+@property (weak, nonatomic) IBOutlet UITextField *email;
+
+
 
 @end

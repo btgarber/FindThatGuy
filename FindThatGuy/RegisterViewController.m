@@ -29,21 +29,27 @@
     // Do any additional setup after loading the view.
 }
 
+- (IBAction)RegisterClicked:(id)sender {
+    User *user = [User sharedUser];
+    [user setFirstname: self.firstname.text];
+    [user setLastname: self.lastname.text];
+    [user setPhonenumber: self.phonenumber.text];
+    [user setEmail: self.email.text];
+    
+    PFObject *pfUser = [user GetPFObject];
+    [pfUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [user setIdent: [pfUser objectId]];
+        [User setDeviceIdentifier: [user ident]];
+        
+        [self performSegueWithIdentifier:@"forwardToMainView" sender:self];
+    }];
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

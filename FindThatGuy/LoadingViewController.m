@@ -29,8 +29,11 @@
     }
     else
     {
-        PFQuery *query = [PFQuery queryWithClassName:@"USER"]; // 1
+        PFQuery *query = [PFQuery queryWithClassName: USER]; // 1
         [query getObjectInBackgroundWithId: ident block:^(PFObject  *pf, NSError *error) {
+            if(error != nil)
+                [self performSegueWithIdentifier:@"register" sender:self];
+            
             User *user = [[User alloc] initWithPFObject:pf];
             [User sharedUser: user];
             

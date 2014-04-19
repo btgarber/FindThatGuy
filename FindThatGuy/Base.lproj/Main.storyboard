@@ -236,12 +236,19 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="RegisterClicked:" destination="HuI-QY-fDA" eventType="touchUpInside" id="LhH-iF-vqg"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="F0J-fR-Tj9" kind="modal" id="6Up-bx-bLJ"/>
+                        <outlet property="email" destination="jdK-zf-Zna" id="anD-3X-dI4"/>
+                        <outlet property="firstname" destination="qvR-Dv-BTK" id="4GP-9k-vqJ"/>
+                        <outlet property="lastname" destination="ifc-iq-yfv" id="o2F-b2-Crg"/>
+                        <outlet property="phonenumber" destination="Vt3-M4-EAN" id="GcL-ER-1w0"/>
+                        <segue destination="F0J-fR-Tj9" kind="modal" identifier="forwardToMainView" id="6Up-bx-bLJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7k-jN-ahn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -255,6 +262,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="vio-jy-Mkd"/>
+        <segue reference="6Up-bx-bLJ"/>
     </inferredMetricsTieBreakers>
 </document>

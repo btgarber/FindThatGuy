@@ -25,6 +25,7 @@ static User* theUser = nil;
 {
     if((self = [super init]) != nil)
     {
+        self.ident = [pf objectId];
         self.firstname = [pf objectForKey: FIRSTNAME];
         self.lastname = [pf objectForKey: LASTNAME];
         self.phonenumber = [pf objectForKey: PHONENUMBER];
@@ -32,6 +33,21 @@ static User* theUser = nil;
     }
     return self;
 }
+
+-(PFObject*)GetPFObject {
+    PFObject *object = [PFObject objectWithClassName: USER]; // 1
+    [object setValue: self.firstname forKey: FIRSTNAME];
+    [object setValue: self.lastname forKey: LASTNAME];
+    [object setValue: self.phonenumber forKey: PHONENUMBER];
+    [object setValue: self.email forKey: EMAIL];
+    return object;
+}
+
+-(NSString*)FullName
+{
+    return [NSString stringWithFormat:@"%@ %@", self.firstname, self.lastname];
+}
+
 
 +(User*)sharedUser {
     if(theUser == nil) {

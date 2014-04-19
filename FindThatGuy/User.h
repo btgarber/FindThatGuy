@@ -13,15 +13,21 @@
 #define LASTNAME @"LASTNAME"
 #define PHONENUMBER @"PHONENUMBER"
 #define EMAIL @"EMAIL"
+#define USER @"USER"
 
 @interface User : NSObject
 
+@property(nonatomic)NSString *ident;
 @property(nonatomic)NSString *firstname;
 @property(nonatomic)NSString *lastname;
 @property(nonatomic)NSString *phonenumber;
 @property(nonatomic)NSString *email;
 
+@property(nonatomic)NSMutableArray *friendLinks;
+
 -(id)initWithPFObject:(PFObject*) pf;
+-(PFObject*)GetPFObject;
+-(NSString*)FullName;
 
 +(NSString*) getDeviceIdentifier;
 +(void) setDeviceIdentifier:(NSString*) ident;
