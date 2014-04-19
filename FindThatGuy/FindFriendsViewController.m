@@ -14,9 +14,9 @@
 
 @implementation FindFriendsViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
@@ -26,6 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.searchType = T_NAME;
+    self.friendsList = [[NSMutableArray alloc] init];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -34,20 +36,31 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (IBAction)SearchClicked:(id)sender {
-    
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self.searchBox resignFirstResponder];
+    [self search: [self.searchBox text] withType:self.searchType];
 }
 
 - (IBAction)NameClicked:(id)sender {
-    
+    self.searchType = T_NAME;
+    self.nameButton.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.95 alpha:1];
+    self.emailButton.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+    self.phoneButton.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
 }
 
 - (IBAction)EmailClicked:(id)sender {
-    
+    self.searchType = T_EMAIL;
+    self.nameButton.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+    self.emailButton.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.95 alpha:1];
+    self.phoneButton.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
 }
 
 - (IBAction)PhoneClicked:(id)sender {
-    
+    self.searchType = T_PHONE;
+    self.nameButton.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+    self.emailButton.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+    self.phoneButton.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.95 alpha:1];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,7 +73,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -72,8 +85,49 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"defaultCell" forIndexPath:indexPath];
+    User *result = [self.friendsList objectAtIndex:indexPath.row];
+    [[cell textLabel] setText: [result FullName]];
     
     return cell;
+}
+
+-(void)search:(NSString*)searchText withType:(int)type
+{
+    PFQuery *query = nil;
+    if(type == T_NAME) {
+        NSMutableArray *queries = [[NSMutableArray alloc] init];
+        for(NSString *part in [searchText componentsSeparatedByString:@" "])
+        {
+            PFQuery *sub_firstname = [PFQuery queryWithClassName: USER];
+            PFQuery *sub_lastname = [PFQuery queryWithClassName: USER];
+            [sub_firstname whereKey: FIRSTNAME containsString: part];
+            [sub_lastname whereKey: LASTNAME containsString: part];
+            [queries addObject: sub_firstname];
+            [queries addObject: sub_lastname];
+        }
+        query = [PFQuery orQueryWithSubqueries: queries];
+    }
+    
+    if(type == T_EMAIL) {
+        query = [PFQuery queryWithClassName: USER];
+        [query whereKey: EMAIL containsString: searchText];
+    }
+    
+    if(type == T_PHONE) {
+        query = [PFQuery queryWithClassName: USER];
+        [query whereKey: PHONENUMBER containsString: searchText];
+    }
+    
+    [query setLimit: 20];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        [self.friendsList removeAllObjects];
+        for(PFObject *pf in objects) {
+            [self.friendsList addObject: [[User alloc] initWithPFObject:pf]];
+        }
+        [self.resultsTable reloadData];
+        NSLog([self.friendsList description]);
+    }];
+    
 }
 
 @end
