@@ -10,4 +10,8 @@
 
 @interface FindFriendsViewController : UITableViewController
 
+@property(nonatomic)NSMutableArray *friendsList;
+
+
+@property (weak, nonatomic) IBOutlet UITextField *searchbox;
 @end

@@ -124,10 +124,10 @@
             </objects>
             <point key="canvasLocation" x="936" y="708"/>
         </scene>
-        <!--View Controller-->
+        <!--Find Friends View Controller-->
         <scene sceneID="0l6-UE-X5H">
             <objects>
-                <viewController id="LPQ-3g-auq" sceneMemberID="viewController">
+                <viewController id="LPQ-3g-auq" customClass="FindFriendsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HH4-WH-VHj"/>
                         <viewControllerLayoutGuide type="bottom" id="uVh-Tm-yoj"/>
@@ -135,9 +135,75 @@
                     <view key="view" contentMode="scaleToFill" id="4hr-Ih-ANP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afu-HG-l5D">
+                                <rect key="frame" x="107" y="65" width="107" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.87174954380000003" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Email">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="EmailClicked:" destination="LPQ-3g-auq" eventType="touchUpInside" id="KI3-rU-FzC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P8q-ZP-c2N">
+                                <rect key="frame" x="0.0" y="65" width="107" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.87174954379562042" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Name">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="NameClicked:" destination="LPQ-3g-auq" eventType="touchUpInside" id="amj-yD-B9d"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fxx-hC-hUs">
+                                <rect key="frame" x="214" y="65" width="106" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.87174954380000003" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Phone">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="PhoneClicked:" destination="LPQ-3g-auq" eventType="touchUpInside" id="LpW-bU-isB"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vp7-5Q-U2D">
+                                <rect key="frame" x="20" y="114" width="224" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xJE-Vk-CUl">
+                                <rect key="frame" x="0.0" y="152" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="4hr-Ih-ANP" id="1LH-ZW-mwc"/>
+                                    <outlet property="delegate" destination="4hr-Ih-ANP" id="nRD-pJ-1TT"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNf-PS-Oe8">
+                                <rect key="frame" x="252" y="114" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="SearchClicked:" destination="LPQ-3g-auq" eventType="touchUpInside" id="weZ-iS-RQv"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="P3i-Eu-xnO"/>
+                    <connections>
+                        <outlet property="searchbox" destination="vp7-5Q-U2D" id="1kZ-UE-teT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jh0-WY-kvL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
