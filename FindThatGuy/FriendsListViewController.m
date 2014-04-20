@@ -58,8 +58,8 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     User *user = [User sharedUser];
-    int pending = [[user PendingFriends] count];
-    int approved = [[user ApprovedFriends] count];
+    int pending = (int)[[user PendingFriends] count];
+    int approved = (int)[[user ApprovedFriends] count];
     if(approved > 0 && pending > 0)
         return 2;
     else if(approved > 0 || pending > 0)

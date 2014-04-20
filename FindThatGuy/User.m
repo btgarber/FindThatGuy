@@ -127,6 +127,11 @@ static User* theUser = nil;
     [self.friendLinks removeObject: friend];
 }
 
+-(BOOL)isRegistered
+{
+    return (self.ident != nil);
+}
+
 +(User*)sharedUser {
     if(theUser == nil) {
         theUser = [[User alloc] init];

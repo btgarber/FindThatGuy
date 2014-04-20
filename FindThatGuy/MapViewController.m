@@ -88,8 +88,8 @@ static NSString *viewId = @"MKPinAnnotationView";
         // Change the values on the callout
         [calloutView.name setText: a.title];
         [calloutView.address setText:a.placeInfo.address];
-        [calloutView.longitude setText: [NSString stringWithFormat:@"%f", a.placeInfo.location.longitude]];
-        [calloutView.latitude setText: [NSString stringWithFormat:@"%f", a.placeInfo.location.latitude]];
+        [calloutView.longitude setText: [NSString stringWithFormat:@"%f", a.placeInfo.location.coordinate.longitude]];
+        [calloutView.latitude setText: [NSString stringWithFormat:@"%f", a.placeInfo.location.coordinate.latitude]];
         
         // Add the callout to the annotation view
         [aView addSubview:calloutView];

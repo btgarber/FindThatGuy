@@ -37,6 +37,7 @@
 -(void)RemoveFriend:(User*)user;
 -(NSMutableArray*)PendingFriends;
 -(NSMutableArray*)ApprovedFriends;
+-(BOOL)isRegistered;
 
 
 +(NSString*) getDeviceIdentifier;

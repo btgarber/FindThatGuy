@@ -32,19 +32,18 @@
 
 // Instead of synthesizing this property, we're going to implement the getter ourselves!
 -(CLLocationCoordinate2D) coordinate {
-	return self.placeInfo.location;
+	return self.placeInfo.location.coordinate;
 }
 
 #pragma mark - protocol conformance methods
 // these methods will be called by the map asking for our info
 - (NSString *)title {
-    DirectionManager *m = [DirectionManager sharedDirectionManager];
-	return [NSString stringWithFormat:@"%s: %@", ((self.placeInfo == m.fromLocation) ? "Start" : "End"), self.placeInfo.name];
+	return [self.placeInfo.user FullName];
 }
 
 // get the subtitle
 - (NSString *)subtitle {
-	return [NSString stringWithFormat:@"Latitude:%f Longitude:%f", self.placeInfo.location.latitude, self.placeInfo.location.longitude];
+	return [NSString stringWithFormat:@"Latitude:%f Longitude:%f", self.placeInfo.location.coordinate.latitude, self.placeInfo.location.coordinate.longitude];
 }
 
 // when I am deallocated, I want to release my reference to the placeInfo

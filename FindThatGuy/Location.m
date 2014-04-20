@@ -11,55 +11,58 @@
 
 @implementation Location
 
-// initialize with coords
--(id)initCurrentLocation:(CLLocationCoordinate2D)coord {
-    // call the superclass constructor, and make sure it succeeds
-    self = [super init];
-    
-    if(self != nil) {
-        self.name = @"Current Location";
-        self.address = @"Current Location";
-        self.location = coord;
-    }
-    return self;
-}
-
 // initialize with a placemark
--(id)initWithPlacemark:(MKPlacemark*)item {
+-(id)initWithPFObject:(PFObject *)object {
     self = [super init];
     
     if(self != nil) {
-        self.name = item.name;
-        self.address = [Location locationFromPlacemark: item];
-        self.location = item.location.coordinate;
+        self.ident = [object objectId];
+        self.user = [object objectForKey: USER];
+        self.address = nil;
+        PFGeoPoint *geopoint = [object objectForKey: LOCATION];
+        self.location = [[CLLocation alloc] initWithLatitude: geopoint.latitude longitude:geopoint.longitude];
     }
     return self;
 }
 
-// initialize with a placemark and a label name
--(id)initWithPlacemark:(MKPlacemark*)item withName:(NSString*)name {
+-(id)initWithLocation:(CLLocation *)location forUser:(User*) user {
     self = [super init];
     
     if(self != nil) {
-        self.name = name;
-        self.address = [Location locationFromPlacemark: item];
-        self.location = item.location.coordinate;
+        self.ident = nil;
+        self.user = user;
+        self.address = nil;
+        self.location = location;
     }
     return self;
+}
+
+-(void)save
+{
+    if(self.ident != nil)
+    {
+        PFGeoPoint *loc = [PFGeoPoint geoPointWithLocation: self.location];
+        PFObject *object = [PFObject objectWithClassName: LOCATION];
+        [object setObject: self.user forKey: USER];
+        [object setObject: loc forKey: LOCATION];
+        if(self.address == nil)
+            [object setObject: self.address forKey: ADDRESS];
+        [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            self.ident = [object objectId];
+        }];
+    }
+    else
+    {
+        PFObject *object = [PFObject objectWithoutDataWithClassName: LOCATION objectId: self.ident];
+        [object setObject: self.address forKey: ADDRESS];
+        [object saveInBackground];
+    }
 }
 
 // get the string location from a placemark
 +(NSString*) locationFromPlacemark:(MKPlacemark*)item {
     NSArray *a = [item.addressDictionary objectForKey:@"FormattedAddressLines"];
     return [a componentsJoinedByString: @" "];
-}
-
-// check if the locations are the same
--(BOOL)equals:(Location*)loc {
-    BOOL res = YES;
-    if(self.location.latitude != loc.location.latitude) res = NO;
-    if(self.location.longitude != loc.location.longitude) res = NO;
-    return res;
 }
 
 

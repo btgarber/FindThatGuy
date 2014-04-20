@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "Location.h"
 #import "DirectionManager.h"
+#import "User.h"
 
 @interface PlaceAnnotation : NSObject <MKAnnotation>
 
