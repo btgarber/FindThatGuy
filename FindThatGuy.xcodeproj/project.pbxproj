@@ -39,6 +39,10 @@
 		E19A2AF71901D31F0087DBB6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E19A2AF51901D31F0087DBB6 /* InfoPlist.strings */; };
 		E19A2AF91901D31F0087DBB6 /* FindThatGuyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E19A2AF81901D31F0087DBB6 /* FindThatGuyTests.m */; };
 		E19B3EA819031EF900457AF3 /* FindFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E19B3EA719031EF900457AF3 /* FindFriendsCell.m */; };
+		E19B3EAB1904358100457AF3 /* CalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = E19B3EAA1904358100457AF3 /* CalloutView.m */; };
+		E19B3EB2190435BF00457AF3 /* PlaceAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E19B3EAD190435BF00457AF3 /* PlaceAnnotation.m */; };
+		E19B3EB3190435BF00457AF3 /* DirectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E19B3EAF190435BF00457AF3 /* DirectionManager.m */; };
+		E19B3EB4190435BF00457AF3 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = E19B3EB1190435BF00457AF3 /* Location.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +101,14 @@
 		E19A2AF81901D31F0087DBB6 /* FindThatGuyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindThatGuyTests.m; sourceTree = "<group>"; };
 		E19B3EA619031EF900457AF3 /* FindFriendsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindFriendsCell.h; sourceTree = "<group>"; };
 		E19B3EA719031EF900457AF3 /* FindFriendsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindFriendsCell.m; sourceTree = "<group>"; };
+		E19B3EA91904358100457AF3 /* CalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalloutView.h; sourceTree = "<group>"; };
+		E19B3EAA1904358100457AF3 /* CalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalloutView.m; sourceTree = "<group>"; };
+		E19B3EAC190435BF00457AF3 /* PlaceAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceAnnotation.h; sourceTree = "<group>"; };
+		E19B3EAD190435BF00457AF3 /* PlaceAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceAnnotation.m; sourceTree = "<group>"; };
+		E19B3EAE190435BF00457AF3 /* DirectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionManager.h; sourceTree = "<group>"; };
+		E19B3EAF190435BF00457AF3 /* DirectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionManager.m; sourceTree = "<group>"; };
+		E19B3EB0190435BF00457AF3 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		E19B3EB1190435BF00457AF3 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +148,12 @@
 		E14600641901D6B600BC9AAB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E19B3EAC190435BF00457AF3 /* PlaceAnnotation.h */,
+				E19B3EAD190435BF00457AF3 /* PlaceAnnotation.m */,
+				E19B3EAE190435BF00457AF3 /* DirectionManager.h */,
+				E19B3EAF190435BF00457AF3 /* DirectionManager.m */,
+				E19B3EB0190435BF00457AF3 /* Location.h */,
+				E19B3EB1190435BF00457AF3 /* Location.m */,
 				E14600671901DA9D00BC9AAB /* User.h */,
 				E14600681901DA9D00BC9AAB /* User.m */,
 				E1460096190208B200BC9AAB /* Friend.h */,
@@ -147,6 +165,8 @@
 		E14600651901D6BE00BC9AAB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E19B3EA91904358100457AF3 /* CalloutView.h */,
+				E19B3EAA1904358100457AF3 /* CalloutView.m */,
 				E19A2AE21901D31F0087DBB6 /* LoadingViewController.h */,
 				E19A2AE31901D31F0087DBB6 /* LoadingViewController.m */,
 				E146006A1901DC0100BC9AAB /* RegisterViewController.h */,
@@ -346,9 +366,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E14600721901DC3B00BC9AAB /* FindFriendsViewController.m in Sources */,
+				E19B3EB4190435BF00457AF3 /* Location.m in Sources */,
 				E1460098190208B200BC9AAB /* Friend.m in Sources */,
 				E146006F1901DC2100BC9AAB /* FriendsListViewController.m in Sources */,
+				E19B3EB3190435BF00457AF3 /* DirectionManager.m in Sources */,
+				E19B3EAB1904358100457AF3 /* CalloutView.m in Sources */,
 				E14600781901E8C000BC9AAB /* FriendsListCell.m in Sources */,
+				E19B3EB2190435BF00457AF3 /* PlaceAnnotation.m in Sources */,
 				E146006C1901DC0100BC9AAB /* RegisterViewController.m in Sources */,
 				E14600751901DC6300BC9AAB /* MapViewController.m in Sources */,
 				E19A2AE41901D31F0087DBB6 /* LoadingViewController.m in Sources */,

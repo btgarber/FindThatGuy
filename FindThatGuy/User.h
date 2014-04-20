@@ -25,6 +25,8 @@
 @property(nonatomic)NSString *phonenumber;
 @property(nonatomic)NSString *email;
 
+@property(nonatomic)Friend *selectedFriend;
+
 @property(nonatomic)NSMutableArray *friendLinks;
 
 -(id)initWithPFObject:(PFObject*) pf;
@@ -33,6 +35,9 @@
 -(Friend*)hasFriend:(User*) user;
 -(Friend*)AddFriend:(User*)user;
 -(void)RemoveFriend:(User*)user;
+-(NSMutableArray*)PendingFriends;
+-(NSMutableArray*)ApprovedFriends;
+
 
 +(NSString*) getDeviceIdentifier;
 +(void) setDeviceIdentifier:(NSString*) ident;

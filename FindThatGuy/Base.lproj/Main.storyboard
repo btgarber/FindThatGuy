@@ -72,7 +72,6 @@
                                 <connections>
                                     <outlet property="city" destination="yNK-sD-ejW" id="Ca9-wG-dnP"/>
                                     <outlet property="name" destination="Scl-T0-o3H" id="aTV-wk-lL3"/>
-                                    <segue destination="rMo-jU-jN9" kind="push" id="fZ4-ef-yZq"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -90,6 +89,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="friendsTable" destination="Qdv-0X-hNx" id="rJ4-fh-Nvs"/>
+                        <segue destination="rMo-jU-jN9" kind="push" identifier="UserMap" id="DU3-gv-3SR"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P5Q-1A-ROz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -119,6 +119,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Goe-vL-KR8"/>
+                    <connections>
+                        <outlet property="mapView" destination="alD-sZ-HSi" id="svH-fU-3bw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mKe-SL-zee" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -239,6 +242,7 @@
         <scene sceneID="bpA-nw-l2k">
             <objects>
                 <navigationController definesPresentationContext="YES" id="F0J-fR-Tj9" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="j9M-9I-iWE"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="H6f-8i-A8a">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

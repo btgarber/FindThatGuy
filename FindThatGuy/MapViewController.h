@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import "CalloutView.h"
+#import "PlaceAnnotation.h"
+#import "User.h"
+#import "Friend.h"
 
-@interface MapViewController : UINavigationController
+@interface MapViewController : UIViewController <MKMapViewDelegate>
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end

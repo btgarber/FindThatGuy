@@ -50,6 +50,28 @@ static User* theUser = nil;
     return [NSString stringWithFormat:@"%@ %@", self.firstname, self.lastname];
 }
 
+-(NSMutableArray*)PendingFriends
+{
+    NSMutableArray *pending = [[NSMutableArray alloc] init];
+    for(Friend *friend in self.friendLinks)
+    {
+        if(friend.approved == NO)
+            [pending addObject:friend];
+    }
+    return pending;
+}
+
+-(NSMutableArray*)ApprovedFriends
+{
+    NSMutableArray *approved = [[NSMutableArray alloc] init];
+    for(Friend *friend in self.friendLinks)
+    {
+        if(friend.approved == YES)
+            [approved addObject:friend];
+    }
+    return approved;
+}
+
 -(Friend*)hasFriend:(User*) user
 {
     for (Friend *friend in self.friendLinks)

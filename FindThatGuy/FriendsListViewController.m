@@ -42,6 +42,11 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self.friendsTable reloadData];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -52,20 +57,31 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    User *user = [User sharedUser];
+    int pending = [[user PendingFriends] count];
+    int approved = [[user ApprovedFriends] count];
+    if(approved > 0 && pending > 0)
+        return 2;
+    else if(approved > 0 || pending > 0)
+        return 1;
+    else return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[User sharedUser] friendLinks] count];
+    User *user = [User sharedUser];
+    if(section == 0)
+        return [[user PendingFriends] count];
+    else if(section == 1)
+        return [[user ApprovedFriends] count];
+    else return 0;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FriendsListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsListCell" forIndexPath:indexPath];
-    
-    Friend *friend = [[[User sharedUser] friendLinks] objectAtIndex:indexPath.row];
+    Friend *friend = [self friendSelectedAt: indexPath];
     [cell.name setText: [friend.user FullName]];
     [cell.city setText: [NSString stringWithFormat:@"%i", friend.approved]];
     return cell;
@@ -73,10 +89,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [[User sharedUser] setSelectedFriend: [self friendSelectedAt: indexPath]];
+    [self performSegueWithIdentifier:@"UserMap" sender:self];
+}
+
+-(Friend*)friendSelectedAt:(NSIndexPath *) indexPath {
+    User *user = [User sharedUser];
+    NSMutableArray *friends = nil;
+    if(indexPath.section == 0)
+        friends = [user PendingFriends];
+    else
+        friends = [user ApprovedFriends];
     
-    UIAlertView *errorAlert = [[UIAlertView alloc]
-                               initWithTitle:@"Error" message:@"Unable to get GPS Fix." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [errorAlert show];
+    return [friends objectAtIndex:indexPath.row];
 }
 
 @end
