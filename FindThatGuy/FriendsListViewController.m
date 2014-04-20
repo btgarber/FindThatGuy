@@ -57,14 +57,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    User *user = [User sharedUser];
-    int pending = (int)[[user PendingFriends] count];
-    int approved = (int)[[user ApprovedFriends] count];
-    if(approved > 0 && pending > 0)
-        return 2;
-    else if(approved > 0 || pending > 0)
-        return 1;
-    else return 0;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -83,14 +76,60 @@
     FriendsListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsListCell" forIndexPath:indexPath];
     Friend *friend = [self friendSelectedAt: indexPath];
     [cell.name setText: [friend.user FullName]];
-    [cell.city setText: [NSString stringWithFormat:@"%i", friend.approved]];
+    if(friend.approved == false)
+    {
+        [cell.city setText: @"Tap to Confirm or Deny"];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    else
+    {
+        [cell.city setText: [NSString stringWithFormat:@"%i", friend.approved]];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [[User sharedUser] setSelectedFriend: [self friendSelectedAt: indexPath]];
-    [self performSegueWithIdentifier:@"UserMap" sender:self];
+    Friend *friend = [self friendSelectedAt: indexPath];
+    [[User sharedUser] setSelectedFriend: friend];
+    
+    if(friend.approved == false)
+    {
+        UIAlertView *confirmAlert = [[UIAlertView alloc]
+                                   initWithTitle:@"Confirm Friend"
+                                   message: [NSString stringWithFormat: @"Would you like to confirm %@ as a friend?", [friend.user FullName]]
+                                   delegate: self
+                                   cancelButtonTitle:@"Deny"
+                                   otherButtonTitles:@"Confirm", nil];
+        [confirmAlert show];
+    }
+    else
+        [self performSegueWithIdentifier:@"UserMap" sender:self];
+}
+
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    User *user = [User sharedUser];
+    if(buttonIndex == 0)
+        [user RemoveFriend: user.selectedFriend.user];
+    else
+        [user.selectedFriend ApproveFriend];
+    [self.friendsTable reloadData];
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 20)];
+    /* Create custom view to display section header... */
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, tableView.frame.size.width, 18)];
+    [label setFont:[UIFont boldSystemFontOfSize:12]];
+    NSString *string = (section==0)?@"Pending":@"Approved";
+    /* Section header is in 0th index... */
+    [label setText:string];
+    [view addSubview:label];
+    [view setBackgroundColor:[UIColor colorWithRed:166/255.0 green:177/255.0 blue:186/255.0 alpha:1.0]]; //your background color...
+    return view;
 }
 
 -(Friend*)friendSelectedAt:(NSIndexPath *) indexPath {

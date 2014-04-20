@@ -11,7 +11,7 @@
 #import "Friend.h"
 #import "FriendsListCell.h"
 
-@interface FriendsListViewController : UITableViewController
+@interface FriendsListViewController : UITableViewController <UIAlertViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *friendsTable;
 
 @end

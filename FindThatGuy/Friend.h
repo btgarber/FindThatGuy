@@ -23,6 +23,7 @@ typedef void (^FriendsLoadedBlock) ();
 @property(nonatomic)BOOL approved;
 
 -(id)initWithUser:(User*) user;
+-(void)ApproveFriend;
 +(void)LoadFriends:(User*)user withCallback:(FriendsLoadedBlock) callback;
 @end
 

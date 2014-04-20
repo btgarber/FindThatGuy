@@ -33,8 +33,9 @@
 
 -(void)ApproveFriend
 {
-    PFObject *object = [PFObject objectWithoutDataWithClassName: USER objectId: self.ident];
-    [object setValue: [NSNumber numberWithBool:YES]  forKey: APPROVED];
+    PFObject *object = [PFObject objectWithoutDataWithClassName: FRIEND objectId: self.ident];
+    self.approved = YES;
+    [object setValue: [NSNumber numberWithBool:self.approved]  forKey: APPROVED];
     [object saveInBackground];
 }
 
