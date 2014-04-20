@@ -31,6 +31,8 @@
 -(PFObject*)GetPFObject;
 -(NSString*)FullName;
 -(Friend*)hasFriend:(User*) user;
+-(Friend*)AddFriend:(User*)user;
+-(void)RemoveFriend:(User*)user;
 
 +(NSString*) getDeviceIdentifier;
 +(void) setDeviceIdentifier:(NSString*) ident;

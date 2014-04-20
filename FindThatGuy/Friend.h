@@ -22,8 +22,7 @@ typedef void (^FriendsLoadedBlock) ();
 @property(nonatomic)User *user;
 @property(nonatomic)BOOL approved;
 
-
-+(void)AddFriend:(NSString*)user withUser:(NSString*) link;
+-(id)initWithUser:(User*) user;
 +(void)LoadFriends:(User*)user withCallback:(FriendsLoadedBlock) callback;
 @end
 

@@ -99,6 +99,20 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    User *user = [User sharedUser];
+    User *result = [self.friendsList objectAtIndex:indexPath.row];
+    Friend *friend = [user hasFriend: result];
+    
+    if(friend == nil)
+        [user AddFriend: result];
+    else
+        [user RemoveFriend: result];
+    
+    [self.resultsTable reloadData];
+}
+
 -(void)search:(NSString*)searchText withType:(int)type
 {
     PFQuery *query = nil;
@@ -133,7 +147,6 @@
             [self.friendsList addObject: [[User alloc] initWithPFObject:pf]];
         }
         [self.resultsTable reloadData];
-        NSLog([self.friendsList description]);
     }];
     
 }

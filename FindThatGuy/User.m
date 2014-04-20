@@ -54,10 +54,46 @@ static User* theUser = nil;
 {
     for (Friend *friend in self.friendLinks)
     {
-        if([self.ident isEqualToString: [friend.user ident]])
+        if([[user ident] isEqualToString: [friend.user ident]])
             return friend;
     }
     return nil;
+}
+
+-(Friend*)AddFriend:(User*)user
+{
+    PFObject *object1 = [PFObject objectWithClassName: FRIEND];
+    [object1 setValue: [PFObject objectWithoutDataWithClassName: USER objectId: self.ident] forKey: USER];
+    [object1 setValue: [PFObject objectWithoutDataWithClassName: USER objectId: [user ident]] forKey: FRIEND];
+    [object1 setValue: [NSNumber numberWithBool:NO]  forKey: APPROVED];
+    [object1 saveInBackground];
+    
+    PFObject *object2 = [PFObject objectWithClassName: FRIEND];
+    [object2 setValue: [PFObject objectWithoutDataWithClassName: USER objectId: [user ident]] forKey: USER];
+    [object2 setValue: [PFObject objectWithoutDataWithClassName: USER objectId: self.ident] forKey: FRIEND];
+    [object2 setValue: [NSNumber numberWithBool:YES]  forKey: APPROVED];
+    [object2 saveInBackground];
+    
+    Friend *friend = [[Friend alloc] initWithUser: user];
+    [self.friendLinks addObject: friend];
+    return friend;
+}
+
+-(void)RemoveFriend:(User*)user
+{
+    Friend *friend = [self hasFriend: user];
+    if(friend == nil) return;
+    PFObject *object1 = [PFObject objectWithClassName: FRIEND];
+    [object1 setValue: [PFObject objectWithoutDataWithClassName: USER objectId: self.ident] forKey: USER];
+    [object1 setValue: [PFObject objectWithoutDataWithClassName: USER objectId: [user ident]] forKey: FRIEND];
+    [object1 deleteInBackground];
+    
+    PFObject *object2 = [PFObject objectWithClassName: FRIEND];
+    [object2 setValue: [PFObject objectWithoutDataWithClassName: USER objectId: [user ident]] forKey: USER];
+    [object2 setValue: [PFObject objectWithoutDataWithClassName: USER objectId: self.ident] forKey: FRIEND];
+    [object2 deleteInBackground];
+    [self.friendLinks removeObject: friend];
+    
 }
 
 +(User*)sharedUser {
