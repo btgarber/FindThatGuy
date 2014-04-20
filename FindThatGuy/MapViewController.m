@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
     
-    [self setTitle: [[[[User sharedUser] selectedFriend] user] FullName]];
+    [self setTitle: [[[[User sharedUser] selectedFriend] otherUser: [User sharedUser]] FullName]];
 }
 
 - (void)didReceiveMemoryWarning

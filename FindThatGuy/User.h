@@ -17,6 +17,8 @@
 #define EMAIL @"EMAIL"
 #define USER @"USER"
 
+typedef void (^FriendsLoadedBlock) ();
+
 @interface User : NSObject
 
 @property(nonatomic)NSString *ident;
@@ -38,6 +40,8 @@
 -(NSMutableArray*)PendingFriends;
 -(NSMutableArray*)ApprovedFriends;
 -(BOOL)isRegistered;
+-(BOOL)equals:(User*) user;
+-(void)loadFriends:(FriendsLoadedBlock) callback;
 
 
 +(NSString*) getDeviceIdentifier;

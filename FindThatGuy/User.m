@@ -76,7 +76,7 @@ static User* theUser = nil;
 {
     for (Friend *friend in self.friendLinks)
     {
-        if([[user ident] isEqualToString: [friend.user ident]])
+        if([[friend otherUser: self] equals: user])
             return friend;
     }
     return nil;
@@ -84,21 +84,15 @@ static User* theUser = nil;
 
 -(Friend*)AddFriend:(User*)user
 {
-    Friend *friend = [[Friend alloc] initWithUser: user];
+    Friend *friend = [[Friend alloc] initForUser: self withFriend: user];
     
-    PFObject *object1 = [PFObject objectWithClassName: FRIEND];
-    [object1 setValue: [PFObject objectWithoutDataWithClassName: USER objectId: self.ident] forKey: USER];
-    [object1 setValue: [PFObject objectWithoutDataWithClassName: USER objectId: [user ident]] forKey: FRIEND];
-    [object1 setValue: [NSNumber numberWithBool:NO]  forKey: APPROVED];
-    [object1 saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        friend.ident = [object1 objectId];
+    PFObject *object = [PFObject objectWithClassName: FRIEND];
+    [object setValue: [PFObject objectWithoutDataWithClassName: USER objectId: self.ident] forKey: USER1];
+    [object setValue: [PFObject objectWithoutDataWithClassName: USER objectId: [user ident]] forKey: USER2];
+    [object setValue: [NSNumber numberWithBool:NO]  forKey: APPROVED];
+    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        friend.ident = [object objectId];
     }];
-    
-    PFObject *object2 = [PFObject objectWithClassName: FRIEND];
-    [object2 setValue: [PFObject objectWithoutDataWithClassName: USER objectId: [user ident]] forKey: USER];
-    [object2 setValue: [PFObject objectWithoutDataWithClassName: USER objectId: self.ident] forKey: FRIEND];
-    [object2 setValue: [NSNumber numberWithBool:YES]  forKey: APPROVED];
-    [object2 saveInBackground];
 
     [self.friendLinks addObject: friend];
     return friend;
@@ -112,10 +106,10 @@ static User* theUser = nil;
     PFQuery *query1 = [PFQuery queryWithClassName: FRIEND];
     PFQuery *query2 = [PFQuery queryWithClassName: FRIEND];
     
-    [query1 whereKey: USER equalTo:[PFObject objectWithoutDataWithClassName: USER objectId: self.ident]];
-    [query2 whereKey: USER equalTo:[PFObject objectWithoutDataWithClassName: USER objectId: user.ident]];
-    [query1 whereKey: FRIEND equalTo:[PFObject objectWithoutDataWithClassName: USER objectId: user.ident]];
-    [query2 whereKey: FRIEND equalTo:[PFObject objectWithoutDataWithClassName: USER objectId: self.ident]];
+    [query1 whereKey: USER1 equalTo:[PFObject objectWithoutDataWithClassName: USER objectId: self.ident]];
+    [query2 whereKey: USER1 equalTo:[PFObject objectWithoutDataWithClassName: USER objectId: user.ident]];
+    [query1 whereKey: USER2 equalTo:[PFObject objectWithoutDataWithClassName: USER objectId: user.ident]];
+    [query2 whereKey: USER2 equalTo:[PFObject objectWithoutDataWithClassName: USER objectId: self.ident]];
     
     PFQuery *query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:query1,query2,nil]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -130,6 +124,35 @@ static User* theUser = nil;
 -(BOOL)isRegistered
 {
     return (self.ident != nil);
+}
+
+-(void)loadFriends:(FriendsLoadedBlock) callback
+{
+    PFQuery *q1 = [PFQuery queryWithClassName: FRIEND];
+    PFQuery *q2 = [PFQuery queryWithClassName: FRIEND];
+    
+    [q1 whereKey: USER1 equalTo: [PFObject objectWithoutDataWithClassName: USER objectId: self.ident]];
+    [q2 whereKey: USER2 equalTo: [PFObject objectWithoutDataWithClassName: USER objectId: self.ident]];
+    
+    PFQuery *query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:q1,q2, nil]];
+    
+    [query includeKey: USER1];
+    [query includeKey: USER2];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        for(PFObject *object in objects)
+        {
+            Friend *friend = [[Friend alloc] initWithPFObject: object forUser: self];
+            [self.friendLinks addObject: friend];
+        }
+        callback();
+    }];
+}
+
+-(BOOL)equals:(User*) user
+{
+    return (self.ident != nil && [self.ident isEqualToString: user.ident]);
 }
 
 +(User*)sharedUser {
@@ -162,6 +185,8 @@ static User* theUser = nil;
     NSData *data = [ident dataUsingEncoding:NSUTF8StringEncoding];
     [data writeToFile:path atomically:YES];
 }
+
+
 
 
 @end

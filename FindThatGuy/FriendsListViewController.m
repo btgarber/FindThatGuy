@@ -31,7 +31,7 @@
     [Friend AddFriend:[[User sharedUser] ident] withUser:@"e9v2KFuIMr"];
     [Friend AddFriend:[[User sharedUser] ident] withUser:@"d8vBGkdiTj"];*/
     
-    [Friend LoadFriends: [User sharedUser] withCallback:^{
+    [[User sharedUser] loadFriends:^{
         [self.friendsTable reloadData];
     }];
     
@@ -57,25 +57,33 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    User *user = [User sharedUser];
+    int pending = (int)[[user PendingFriends] count];
+    int approved = (int)[[user ApprovedFriends] count];
+    if(approved > 0 && pending > 0)
+        return 2;
+    else if(approved > 0 || pending > 0)
+        return 1;
+    else return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     User *user = [User sharedUser];
+    int pending = (int)[[user PendingFriends] count];
+    int approved = (int)[[user ApprovedFriends] count];
     if(section == 0)
-        return [[user PendingFriends] count];
+        return (pending > 0) ? pending : approved;
     else if(section == 1)
-        return [[user ApprovedFriends] count];
+        return approved;
     else return 0;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FriendsListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsListCell" forIndexPath:indexPath];
     Friend *friend = [self friendSelectedAt: indexPath];
-    [cell.name setText: [friend.user FullName]];
+    [cell.name setText: [[friend otherUser: [User sharedUser]] FullName]];
     if(friend.approved == false)
     {
         [cell.city setText: @"Tap to Confirm or Deny"];
@@ -98,7 +106,7 @@
     {
         UIAlertView *confirmAlert = [[UIAlertView alloc]
                                    initWithTitle:@"Confirm Friend"
-                                   message: [NSString stringWithFormat: @"Would you like to confirm %@ as a friend?", [friend.user FullName]]
+                                   message: [NSString stringWithFormat: @"Would you like to confirm %@ as a friend?", [[friend otherUser: [User sharedUser]] FullName]]
                                    delegate: self
                                    cancelButtonTitle:@"Deny"
                                    otherButtonTitles:@"Confirm", nil];
@@ -112,7 +120,7 @@
 {
     User *user = [User sharedUser];
     if(buttonIndex == 0)
-        [user RemoveFriend: user.selectedFriend.user];
+        [user RemoveFriend: [user.selectedFriend otherUser: [User sharedUser]]];
     else
         [user.selectedFriend ApproveFriend];
     [self.friendsTable reloadData];
@@ -124,9 +132,10 @@
     /* Create custom view to display section header... */
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, tableView.frame.size.width, 18)];
     [label setFont:[UIFont boldSystemFontOfSize:12]];
-    NSString *string = (section==0)?@"Pending":@"Approved";
-    /* Section header is in 0th index... */
-    [label setText:string];
+    User *user = [User sharedUser];
+    
+    [label setText: ([[user PendingFriends] count] > 0 && section==0) ? @"Pending" : @"Approved"];
+    
     [view addSubview:label];
     [view setBackgroundColor:[UIColor colorWithRed:166/255.0 green:177/255.0 blue:186/255.0 alpha:1.0]]; //your background color...
     return view;
@@ -136,7 +145,9 @@
     User *user = [User sharedUser];
     NSMutableArray *friends = nil;
     if(indexPath.section == 0)
-        friends = [user PendingFriends];
+    {
+        friends = [[user PendingFriends] count] > 0 ? [user PendingFriends] : [user ApprovedFriends];
+    }
     else
         friends = [user ApprovedFriends];
     

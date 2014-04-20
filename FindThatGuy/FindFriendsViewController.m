@@ -144,7 +144,9 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         [self.friendsList removeAllObjects];
         for(PFObject *pf in objects) {
-            [self.friendsList addObject: [[User alloc] initWithPFObject:pf]];
+            User *user = [[User alloc] initWithPFObject:pf];
+            if(![user equals: [User sharedUser]])
+                [self.friendsList addObject: user];
         }
         [self.resultsTable reloadData];
     }];

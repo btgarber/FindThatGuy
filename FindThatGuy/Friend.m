@@ -15,20 +15,43 @@
 {
     if((self = [super init]) != nil)
     {
-        self.user = nil;
+        self.user1 = nil;
+        self.user2 = nil;
         self.approved = NO;
     }
     return self;
 }
 
--(id)initWithUser:(User*) user
+-(id)initForUser:(User*) user withFriend:(User*) friend
 {
     if((self = [super init]) != nil)
     {
-        self.user = user;
+        self.user1 = user;
+        self.user2 = friend;
         self.approved = NO;
     }
     return self;
+}
+
+-(id)initWithPFObject:(PFObject*) object forUser:(User*) user
+{
+    if((self = [super init]) != nil)
+    {
+        self.ident = [object objectId];
+        self.user1 = [[User alloc] initWithPFObject: [object objectForKey: USER1]];
+        self.user2 = [[User alloc] initWithPFObject: [object objectForKey: USER2]];
+        self.approved = [[object objectForKey: APPROVED] boolValue];
+        
+        self.approved = NO;
+    }
+    return self;
+}
+
+-(User*)otherUser:(User*) user
+{
+    if([self.user1 equals: user])
+        return self.user2;
+    else return self.user1;
 }
 
 -(void)ApproveFriend
@@ -37,26 +60,6 @@
     self.approved = YES;
     [object setValue: [NSNumber numberWithBool:self.approved]  forKey: APPROVED];
     [object saveInBackground];
-}
-
-+(void)LoadFriends:(User*)user withCallback:(FriendsLoadedBlock) callback
-{
-    PFQuery *query = [PFQuery queryWithClassName: FRIEND];
-    [query whereKey: USER equalTo: [PFObject objectWithoutDataWithClassName: USER objectId: [user ident]]];
-    [query includeKey: FRIEND];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
-        for(PFObject *object in objects)
-        {
-            Friend *friend = [[Friend alloc] init];
-            [friend setIdent: [object objectId]];
-            [friend setUser: [[User alloc] initWithPFObject: [object objectForKey: FRIEND]]];
-            [friend setApproved: [[object objectForKey: APPROVED] boolValue]];
-            [user.friendLinks addObject: friend];
-        }
-        if(callback != nil) callback();
-    }];
 }
 
 
