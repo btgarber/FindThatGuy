@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
+#import "Location.h"
 
 @class Friend;
+@class User;
 
 #define FIRSTNAME @"FIRSTNAME"
 #define LASTNAME @"LASTNAME"
@@ -18,6 +20,7 @@
 #define USER @"USER"
 
 typedef void (^FriendsLoadedBlock) ();
+typedef void (^LocationLoadedBlock) (User *user);
 
 @interface User : NSObject
 
@@ -27,6 +30,7 @@ typedef void (^FriendsLoadedBlock) ();
 @property(nonatomic)NSString *phonenumber;
 @property(nonatomic)NSString *email;
 
+@property(nonatomic)Location *currentLocation;
 @property(nonatomic)Friend *selectedFriend;
 
 @property(nonatomic)NSMutableArray *friendLinks;
@@ -42,6 +46,7 @@ typedef void (^FriendsLoadedBlock) ();
 -(BOOL)isRegistered;
 -(BOOL)equals:(User*) user;
 -(void)loadFriends:(FriendsLoadedBlock) callback;
+-(void)loadCurrentLocation:(LocationLoadedBlock)callback;
 
 
 +(NSString*) getDeviceIdentifier;

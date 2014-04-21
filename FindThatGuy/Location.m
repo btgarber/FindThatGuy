@@ -39,13 +39,13 @@
 
 -(void)save
 {
-    if(self.ident != nil)
+    if(self.ident == nil)
     {
         PFGeoPoint *loc = [PFGeoPoint geoPointWithLocation: self.location];
         PFObject *object = [PFObject objectWithClassName: LOCATION];
-        [object setObject: self.user forKey: USER];
+        [object setObject: [PFObject objectWithoutDataWithClassName: USER objectId: self.user.ident] forKey: USER];
         [object setObject: loc forKey: LOCATION];
-        if(self.address == nil)
+        if(self.address != nil)
             [object setObject: self.address forKey: ADDRESS];
         [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             self.ident = [object objectId];

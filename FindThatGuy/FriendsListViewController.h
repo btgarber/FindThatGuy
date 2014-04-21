@@ -10,8 +10,10 @@
 #import "User.h"
 #import "Friend.h"
 #import "FriendsListCell.h"
+#import "Location.h"
 
-@interface FriendsListViewController : UITableViewController <UIAlertViewDelegate>
+@interface FriendsListViewController : UITableViewController <UIAlertViewDelegate, CLLocationManagerDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *friendsTable;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end

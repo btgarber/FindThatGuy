@@ -27,5 +27,7 @@
 -(id)initWithPFObject:(PFObject*) object forUser:(User*) user;
 -(void)ApproveFriend;
 -(User*)otherUser:(User*) user;
+-(BOOL)isPrimary:(User*) user;
+
 @end
 

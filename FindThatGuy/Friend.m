@@ -41,8 +41,6 @@
         self.user1 = [[User alloc] initWithPFObject: [object objectForKey: USER1]];
         self.user2 = [[User alloc] initWithPFObject: [object objectForKey: USER2]];
         self.approved = [[object objectForKey: APPROVED] boolValue];
-        
-        self.approved = NO;
     }
     return self;
 }
@@ -52,6 +50,11 @@
     if([self.user1 equals: user])
         return self.user2;
     else return self.user1;
+}
+
+-(BOOL)isPrimary:(User*) user
+{
+    return [self.user1 equals: user];
 }
 
 -(void)ApproveFriend

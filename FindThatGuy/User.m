@@ -155,6 +155,18 @@ static User* theUser = nil;
     return (self.ident != nil && [self.ident isEqualToString: user.ident]);
 }
 
+-(void)loadCurrentLocation:(LocationLoadedBlock)callback
+{
+    PFQuery *query = [PFQuery queryWithClassName: LOCATION];
+    [query whereKey: USER equalTo: [PFObject objectWithoutDataWithClassName: USER objectId: self.ident]];
+    [query orderByDescending:@"updatedAt"];
+    [query setLimit:1];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if([objects count] < 1) return;
+        self.currentLocation = [[Location alloc] initWithPFObject: [objects objectAtIndex: 0]];
+    }];
+}
+
 +(User*)sharedUser {
     if(theUser == nil) {
         theUser = [[User alloc] init];

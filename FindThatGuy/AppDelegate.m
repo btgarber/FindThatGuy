@@ -15,13 +15,7 @@
     // Override point for customization after application launch.
     [Parse setApplicationId:@"O7Iy7ko920Vr53gvi0OL0d45oU0Dvdp83HC7coK2"clientKey:@"CWJbTX4kXSjo6WvPGSNvwZIp7vvlKrMuZgRQ3LmY"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
-    self.locationManager = [[CLLocationManager alloc] init];
-    
-    self.locationManager.delegate = self;
-    [self.locationManager startMonitoringSignificantLocationChanges];
-    
-    
+
     return YES;
 }
 							
@@ -50,35 +44,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-    /*UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-    //localNotif.fireDate = nil;
-    localNotif.timeZone = [NSTimeZone defaultTimeZone];
-    
-	// Notification details
-    localNotif.alertBody = @"HELLO";
-	// Set the action button
-    localNotif.alertAction = @"View";
-    
-    localNotif.soundName = UILocalNotificationDefaultSoundName;
-    localNotif.applicationIconBadgeNumber = 1;
-    
-	// Specify custom data for the notification
-    NSDictionary *infoDict = [NSDictionary dictionaryWithObject:@"someValue" forKey:@"someKey"];
-    localNotif.userInfo = infoDict;
-    
-	// Schedule the notification
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];*/
-    
-    User *user = [User sharedUser];
-    if([user isRegistered]) {
-        Location *location = [[Location alloc] initWithLocation: manager.location forUser: user];
-        [location save];
-    }
-    
 }
 
 @end

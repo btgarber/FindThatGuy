@@ -35,6 +35,8 @@
         [self.friendsTable reloadData];
     }];
     
+    [self startLocationUpdates];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -86,7 +88,9 @@
     [cell.name setText: [[friend otherUser: [User sharedUser]] FullName]];
     if(friend.approved == false)
     {
-        [cell.city setText: @"Tap to Confirm or Deny"];
+        if([friend isPrimary:[User sharedUser]])
+            [cell.city setText: @"Friend Request Sent"];
+        else [cell.city setText: @"Tap to Confirm or Deny"];
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     else
@@ -104,6 +108,8 @@
     
     if(friend.approved == false)
     {
+        if([friend isPrimary: [User sharedUser]]) return;
+        
         UIAlertView *confirmAlert = [[UIAlertView alloc]
                                    initWithTitle:@"Confirm Friend"
                                    message: [NSString stringWithFormat: @"Would you like to confirm %@ as a friend?", [[friend otherUser: [User sharedUser]] FullName]]
@@ -153,5 +159,45 @@
     
     return [friends objectAtIndex:indexPath.row];
 }
+
+-(void)startLocationUpdates
+{
+    if(self.locationManager == nil)
+        self.locationManager = [[CLLocationManager alloc] init];
+    
+    self.locationManager.delegate = self;
+    [self.locationManager startMonitoringSignificantLocationChanges];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    /*UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+     //localNotif.fireDate = nil;
+     localNotif.timeZone = [NSTimeZone defaultTimeZone];
+     
+     // Notification details
+     localNotif.alertBody = @"HELLO";
+     // Set the action button
+     localNotif.alertAction = @"View";
+     
+     localNotif.soundName = UILocalNotificationDefaultSoundName;
+     localNotif.applicationIconBadgeNumber = 1;
+     
+     // Specify custom data for the notification
+     NSDictionary *infoDict = [NSDictionary dictionaryWithObject:@"someValue" forKey:@"someKey"];
+     localNotif.userInfo = infoDict;
+     
+     // Schedule the notification
+     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];*/
+    
+    User *user = [User sharedUser];
+    if([user isRegistered]) {
+        Location *location = [[Location alloc] initWithLocation: manager.location forUser: user];
+        [location save];
+    }
+    
+}
+
+
 
 @end
