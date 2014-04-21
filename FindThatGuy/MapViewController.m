@@ -27,7 +27,22 @@
 {
     [super viewDidLoad];
     
-    [self setTitle: [[[[User sharedUser] selectedFriend] otherUser: [User sharedUser]] FullName]];
+    User *user = [User sharedUser];
+    User *currentUser = [user.selectedFriend otherUser: [User sharedUser]];
+    [self setTitle: [currentUser FullName]];
+    
+    [currentUser loadCurrentLocation:^(User *user) {
+        MKCoordinateSpan span = MKCoordinateSpanMake(.01, .01);
+        MKCoordinateRegion newRegion = MKCoordinateRegionMake(user.currentLocation.location.coordinate, span);
+        [self.mapView setRegion:newRegion animated:YES];
+        
+        // Create our place annotations
+        PlaceAnnotation *annot = [[PlaceAnnotation alloc] initWithInfo: currentUser.currentLocation];
+        
+        // Place our annotations on the map
+        [self.mapView addAnnotation: annot];
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning

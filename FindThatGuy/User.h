@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
-#import "Location.h"
 
 @class Friend;
 @class User;
+@class Location;
 
 #define FIRSTNAME @"FIRSTNAME"
 #define LASTNAME @"LASTNAME"

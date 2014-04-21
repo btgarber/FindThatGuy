@@ -12,12 +12,12 @@
 @implementation Location
 
 // initialize with a placemark
--(id)initWithPFObject:(PFObject *)object {
+-(id)initWithPFObject:(PFObject *)object forUser:(User*) user {
     self = [super init];
     
     if(self != nil) {
         self.ident = [object objectId];
-        self.user = [object objectForKey: USER];
+        self.user = user;
         self.address = nil;
         PFGeoPoint *geopoint = [object objectForKey: LOCATION];
         self.location = [[CLLocation alloc] initWithLatitude: geopoint.latitude longitude:geopoint.longitude];

@@ -24,7 +24,7 @@
 @property (nonatomic, retain) CLLocation* location;
 
 // define our functions
--(id)initWithPFObject:(PFObject*)object;
+-(id)initWithPFObject:(PFObject *)object forUser:(User*) user;
 -(id)initWithLocation:(CLLocation *)location forUser:(User*) user;
 -(void)save;
 

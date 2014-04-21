@@ -8,6 +8,7 @@
 
 #import "User.h"
 #import "Friend.h"
+#import "Location.h"
 
 @implementation User
 
@@ -145,6 +146,7 @@ static User* theUser = nil;
         {
             Friend *friend = [[Friend alloc] initWithPFObject: object forUser: self];
             [self.friendLinks addObject: friend];
+            
         }
         callback();
     }];
@@ -163,7 +165,8 @@ static User* theUser = nil;
     [query setLimit:1];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if([objects count] < 1) return;
-        self.currentLocation = [[Location alloc] initWithPFObject: [objects objectAtIndex: 0]];
+        self.currentLocation = [[Location alloc] initWithPFObject: [objects objectAtIndex: 0] forUser:self];
+        callback(self);
     }];
 }
 
