@@ -47,6 +47,17 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [self.friendsTable reloadData];
+    
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    [installation setObject:[[User sharedUser] ident] forKey:@"user"];
+    [installation saveInBackground];
+    
+    PFQuery *pushQuery = [PFInstallation query];
+    [pushQuery whereKey:@"user" equalTo:[[User sharedUser] ident] ];
+    
+    // Send push notification to query
+    [PFPush sendPushMessageToQueryInBackground:pushQuery
+                                   withMessage:@"Hello World!"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -127,8 +138,15 @@
     User *user = [User sharedUser];
     if(buttonIndex == 0)
         [user RemoveFriend: [user.selectedFriend otherUser: [User sharedUser]]];
-    else
+    else {
         [user.selectedFriend ApproveFriend];
+        PFQuery *pushQuery = [PFInstallation query];
+        [pushQuery whereKey:@"deviceType" equalTo:@"ios"];
+        
+        // Send push notification to query
+        [PFPush sendPushMessageToQueryInBackground:pushQuery
+                                       withMessage:@"Hello World!"];
+    }
     [self.friendsTable reloadData];
 }
 
