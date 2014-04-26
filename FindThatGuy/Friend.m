@@ -57,12 +57,19 @@
     return [self.user1 equals: user];
 }
 
--(void)ApproveFriend
+-(void)ApproveFriend:(User*)user
 {
     PFObject *object = [PFObject objectWithoutDataWithClassName: FRIEND objectId: self.ident];
     self.approved = YES;
     [object setValue: [NSNumber numberWithBool:self.approved]  forKey: APPROVED];
-    [object saveInBackground];
+    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        PFQuery *pushQuery = [PFInstallation query];
+        [pushQuery whereKey:@"user" equalTo: [[self otherUser: user] ident]];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:[NSString stringWithFormat:@"%@ approved your friend request!", [user FullName]] forKey:@"message"];
+        [dic setValue: PUSH_FRIEND_APPROVED forKey:@"command"];
+        [PFPush sendPushDataToQueryInBackground: pushQuery withData: dic];
+    }];
 }
 
 

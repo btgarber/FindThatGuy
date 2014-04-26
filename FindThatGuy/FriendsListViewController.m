@@ -36,6 +36,7 @@
     }];
     
     [self startLocationUpdates];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"reloadFriendsTable" object:nil];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -51,13 +52,11 @@
     PFInstallation *installation = [PFInstallation currentInstallation];
     [installation setObject:[[User sharedUser] ident] forKey:@"user"];
     [installation saveInBackground];
-    
-    PFQuery *pushQuery = [PFInstallation query];
-    [pushQuery whereKey:@"user" equalTo:[[User sharedUser] ident] ];
-    
-    // Send push notification to query
-    [PFPush sendPushMessageToQueryInBackground:pushQuery
-                                   withMessage:@"Hello World!"];
+}
+
+- (void)reloadTable:(NSNotification *)notification
+{
+    [self.friendsTable reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -140,12 +139,6 @@
         [user RemoveFriend: [user.selectedFriend otherUser: [User sharedUser]]];
     else {
         [user.selectedFriend ApproveFriend];
-        PFQuery *pushQuery = [PFInstallation query];
-        [pushQuery whereKey:@"deviceType" equalTo:@"ios"];
-        
-        // Send push notification to query
-        [PFPush sendPushMessageToQueryInBackground:pushQuery
-                                       withMessage:@"Hello World!"];
     }
     [self.friendsTable reloadData];
 }

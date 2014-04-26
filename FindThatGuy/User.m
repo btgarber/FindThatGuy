@@ -93,6 +93,12 @@ static User* theUser = nil;
     [object setValue: [NSNumber numberWithBool:NO]  forKey: APPROVED];
     [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         friend.ident = [object objectId];
+        PFQuery *pushQuery = [PFInstallation query];
+        [pushQuery whereKey:@"user" equalTo: [user ident]];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:[NSString stringWithFormat:@"%@ just added you as a friend!", [self FullName]] forKey:@"message"];
+        [dic setValue: PUSH_FRIEND_ADDED forKey:@"command"];
+        [PFPush sendPushDataToQueryInBackground: pushQuery withData: dic];
     }];
 
     [self.friendLinks addObject: friend];
@@ -115,7 +121,13 @@ static User* theUser = nil;
     PFQuery *query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:query1,query2,nil]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         for(PFObject *object in objects) {
-            [object deleteInBackground];
+            [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                PFQuery *pushQuery = [PFInstallation query];
+                [pushQuery whereKey:@"user" equalTo: [user ident]];
+                NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+                [dic setValue: PUSH_FRIEND_REMOVED forKey:@"command"];
+                [PFPush sendPushDataToQueryInBackground: pushQuery withData: dic];
+            }];
         }
     }];
     
@@ -140,6 +152,8 @@ static User* theUser = nil;
     [query includeKey: USER1];
     [query includeKey: USER2];
     
+    [self.friendLinks removeAllObjects];
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         for(PFObject *object in objects)
@@ -148,7 +162,8 @@ static User* theUser = nil;
             [self.friendLinks addObject: friend];
             
         }
-        callback();
+        if(callback != nil)
+            callback();
     }];
 }
 

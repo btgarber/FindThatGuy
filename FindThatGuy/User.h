@@ -19,6 +19,12 @@
 #define EMAIL @"EMAIL"
 #define USER @"USER"
 
+#define PUSH_FRIEND_ADDED @"FRIEND_ADDED"
+#define PUSH_FRIEND_REMOVED @"FRIEND_REMOVED"
+#define PUSH_FRIEND_APPROVED @"FRIEND_APPROVED"
+#define PUSH_FRIEND_DECLINED @"FRIEND_DECLINED"
+
+
 typedef void (^FriendsLoadedBlock) ();
 typedef void (^LocationLoadedBlock) (User *user);
 

@@ -71,27 +71,40 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken {
 
 - (void)application:(UIApplication *)application
 didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    NSLog(@"DASDSADASDASDAS");
+    
     [PFPush handlePush:userInfo];
     
-    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-    //localNotif.fireDate = nil;
-    localNotif.timeZone = [NSTimeZone defaultTimeZone];
+    if([[userInfo objectForKey:@"command"] isEqualToString: PUSH_FRIEND_ADDED] ||
+       [[userInfo objectForKey:@"command"] isEqualToString: PUSH_FRIEND_APPROVED])
+    {
+        UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+        //localNotif.fireDate = nil;
+        localNotif.timeZone = [NSTimeZone defaultTimeZone];
+        
+        // Notification details
+        localNotif.alertBody =  [userInfo objectForKey:@"message"];
+        // Set the action button
+        localNotif.alertAction = @"View";
+        
+        localNotif.soundName = UILocalNotificationDefaultSoundName;
+        localNotif.applicationIconBadgeNumber = 1;
+        
+        // Specify custom data for the notification
+        NSDictionary *infoDict = [NSDictionary dictionaryWithObject:@"someValue" forKey:@"someKey"];
+        localNotif.userInfo = infoDict;
+        
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+        
+    }
     
-    // Notification details
-    localNotif.alertBody = @"RECEIVED PUSH!";
-    // Set the action button
-    localNotif.alertAction = @"View";
+    if([[userInfo objectForKey:@"command"] isEqualToString: PUSH_FRIEND_REMOVED])
+    {
+        //[[User sharedUser] loadFriends:nil];
+    }
     
-    localNotif.soundName = UILocalNotificationDefaultSoundName;
-    localNotif.applicationIconBadgeNumber = 1;
-    
-    // Specify custom data for the notification
-    NSDictionary *infoDict = [NSDictionary dictionaryWithObject:@"someValue" forKey:@"someKey"];
-    localNotif.userInfo = infoDict;
-    
-    // Schedule the notification
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+    [[User sharedUser] loadFriends:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadFriendsTable" object:nil];
+    }];
     
     
     
