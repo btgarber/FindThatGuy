@@ -138,7 +138,7 @@
     if(buttonIndex == 0)
         [user RemoveFriend: [user.selectedFriend otherUser: [User sharedUser]]];
     else {
-        [user.selectedFriend ApproveFriend];
+        [user.selectedFriend ApproveFriend: user];
     }
     [self.friendsTable reloadData];
 }

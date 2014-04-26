@@ -87,7 +87,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
         localNotif.alertAction = @"View";
         
         localNotif.soundName = UILocalNotificationDefaultSoundName;
-        localNotif.applicationIconBadgeNumber = 1;
+        localNotif.applicationIconBadgeNumber = 0;
         
         // Specify custom data for the notification
         NSDictionary *infoDict = [NSDictionary dictionaryWithObject:@"someValue" forKey:@"someKey"];
@@ -102,9 +102,10 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
         //[[User sharedUser] loadFriends:nil];
     }
     
-    [[User sharedUser] loadFriends:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadFriendsTable" object:nil];
-    }];
+    if([[User sharedUser] isRegistered])
+        [[User sharedUser] loadFriends:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadFriendsTable" object:nil];
+        }];
     
     
     
