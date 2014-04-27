@@ -40,6 +40,9 @@
 
 -(void)save
 {
+    if(self.location.coordinate.latitude == 0 && self.location.coordinate.longitude == 0)
+        return;
+    
     if(self.ident == nil)
     {
         PFGeoPoint *loc = [PFGeoPoint geoPointWithLocation: self.location];

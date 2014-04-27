@@ -63,12 +63,15 @@
     self.approved = YES;
     [object setValue: [NSNumber numberWithBool:self.approved]  forKey: APPROVED];
     [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
         PFQuery *pushQuery = [PFInstallation query];
-        [pushQuery whereKey:@"user" equalTo: [[self otherUser: user] ident]];
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        [dic setObject:[NSString stringWithFormat:@"%@ approved your friend request!", [user FullName]] forKey:@"message"];
-        [dic setValue: PUSH_FRIEND_APPROVED forKey:@"command"];
-        [PFPush sendPushDataToQueryInBackground: pushQuery withData: dic];
+        PFPush *push = [[PFPush alloc] init];
+        [pushQuery whereKey:@"user" equalTo: [[self otherUser:user] ident]];
+        [push setQuery: pushQuery];
+        [data setObject:PUSH_FRIEND_APPROVED forKey:@"command"];
+        [data setObject:[NSString stringWithFormat:@"%@ approved your friend request!", [user FullName]] forKey:@"alert"];
+        [push setData: data];
+        [push sendPushInBackground];
     }];
 }
 
