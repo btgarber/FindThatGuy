@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C65CD894190C7C8A0069ABCB /* CalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C65CD893190C7C8A0069ABCB /* CalloutView.xib */; };
 		E14600691901DA9D00BC9AAB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E14600681901DA9D00BC9AAB /* User.m */; };
 		E146006C1901DC0100BC9AAB /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E146006B1901DC0100BC9AAB /* RegisterViewController.m */; };
 		E146006F1901DC2100BC9AAB /* FriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E146006E1901DC2100BC9AAB /* FriendsListViewController.m */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C65CD893190C7C8A0069ABCB /* CalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalloutView.xib; sourceTree = "<group>"; };
 		E14600671901DA9D00BC9AAB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		E14600681901DA9D00BC9AAB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		E146006A1901DC0100BC9AAB /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		E19A2AD31901D31E0087DBB6 /* FindThatGuy */ = {
 			isa = PBXGroup;
 			children = (
+				C65CD893190C7C8A0069ABCB /* CalloutView.xib */,
 				E14600651901D6BE00BC9AAB /* Controllers */,
 				E14600641901D6B600BC9AAB /* Models */,
 				E19A2ADC1901D31E0087DBB6 /* AppDelegate.h */,
@@ -358,6 +361,7 @@
 				E19A2AE61901D31F0087DBB6 /* Images.xcassets in Resources */,
 				E19A2AD81901D31E0087DBB6 /* InfoPlist.strings in Resources */,
 				E19A2AE11901D31F0087DBB6 /* Main.storyboard in Resources */,
+				C65CD894190C7C8A0069ABCB /* CalloutView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

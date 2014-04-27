@@ -74,10 +74,10 @@ static NSString *viewId = @"MKPinAnnotationView";
     annotationView.canShowCallout = NO;
     
     // Set the pin color
-    annotationView.pinColor = (((PlaceAnnotation*)annotation).placeInfo == manager.fromLocation) ? MKPinAnnotationColorPurple : MKPinAnnotationColorGreen;
+   // annotationView.pinColor = (((PlaceAnnotation*)annotation).placeInfo == manager.fromLocation) ? MKPinAnnotationColorPurple : MKPinAnnotationColorGreen;
     
     // Set the pin image
-    annotationView.image = (((PlaceAnnotation*)annotation).placeInfo == manager.fromLocation) ? [UIImage imageNamed:@"route-start.png"]: [UIImage imageNamed:@"route-stop.png"];
+    //annotationView.image = (((PlaceAnnotation*)annotation).placeInfo == manager.fromLocation) ? [UIImage imageNamed:@"route-start.png"]: [UIImage imageNamed:@"route-stop.png"];
     
     // Return the annotation
     return annotationView;
@@ -87,7 +87,7 @@ static NSString *viewId = @"MKPinAnnotationView";
 - (void)mapView:(MKMapView *)sender didSelectAnnotationView:(MKAnnotationView *)aView
 {
     // if the annotation is not a MKUserLocation class
-    if(![aView.annotation isKindOfClass:[MKUserLocation class]]) {
+   // if(![aView.annotation isKindOfClass:[MKUserLocation class]]) {
         
         // Get the annotation
         PlaceAnnotation *a = [aView annotation];
@@ -108,7 +108,7 @@ static NSString *viewId = @"MKPinAnnotationView";
         
         // Add the callout to the annotation view
         [aView addSubview:calloutView];
-    }
+    //}
 }
 
 // Create a polyline for the directions

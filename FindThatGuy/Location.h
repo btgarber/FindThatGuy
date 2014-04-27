@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import <CoreLocation/CoreLocation.h>
 #import <MapKit/MKMapItem.h>
 #import <Parse/Parse.h>
 #import "User.h"
@@ -28,6 +29,6 @@
 -(id)initWithLocation:(CLLocation *)location forUser:(User*) user;
 -(void)save;
 
-+(NSString*) locationFromPlacemark:(MKPlacemark*)item;
+-(NSString*) locationFromCLLocation:(CLLocation*)item;
 
 @end

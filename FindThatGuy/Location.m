@@ -18,9 +18,10 @@
     if(self != nil) {
         self.ident = [object objectId];
         self.user = user;
-        self.address = nil;
         PFGeoPoint *geopoint = [object objectForKey: LOCATION];
         self.location = [[CLLocation alloc] initWithLatitude: geopoint.latitude longitude:geopoint.longitude];
+        self.address = [self locationFromCLLocation:self.location];
+        
     }
     return self;
 }
@@ -60,9 +61,31 @@
 }
 
 // get the string location from a placemark
-+(NSString*) locationFromPlacemark:(MKPlacemark*)item {
-    NSArray *a = [item.addressDictionary objectForKey:@"FormattedAddressLines"];
-    return [a componentsJoinedByString: @" "];
+-(NSString*) locationFromCLLocation:(CLLocation*)item {
+    //NSArray *a = [item.addressDictionary objectForKey:@"FormattedAddressLines"];
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:item completionHandler:^(NSArray *placemarks, NSError *error)
+     {
+         // we are inside of a block here, and this is run asynchronously.  We are not run immediately following the allocation of the geocoder
+         NSLog(@"Found placemarks: %@", placemarks);
+         if (error == nil && [placemarks count] > 0) {
+             MKPlacemark *placemark = [placemarks lastObject];
+             self.address = [NSString stringWithFormat:@"%@ %@ %@, %@ %@",
+                                   placemark.thoroughfare,
+                                   placemark.postalCode, placemark.locality,
+                                   placemark.administrativeArea,
+                                   placemark.country];
+         }
+         else
+         {
+             NSLog(@"%@", error.debugDescription);
+         }
+         
+     }];
+
+    return self.address;
+   // return [a componentsJoinedByString: @" "];
+    
 }
 
 
