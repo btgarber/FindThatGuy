@@ -93,12 +93,16 @@ static User* theUser = nil;
     [object setValue: [NSNumber numberWithBool:NO]  forKey: APPROVED];
     [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         friend.ident = [object objectId];
+        
+        NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
         PFQuery *pushQuery = [PFInstallation query];
+        PFPush *push = [[PFPush alloc] init];
         [pushQuery whereKey:@"user" equalTo: [user ident]];
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        [dic setObject:[NSString stringWithFormat:@"%@ just added you as a friend!", [self FullName]] forKey:@"message"];
-        [dic setValue: PUSH_FRIEND_ADDED forKey:@"command"];
-        [PFPush sendPushDataToQueryInBackground: pushQuery withData: dic];
+        [push setQuery: pushQuery];
+        [data setObject:PUSH_FRIEND_ADDED forKey:@"command"];
+        [data setObject:[NSString stringWithFormat:@"%@ just added you as a friend!", [user FullName]] forKey:@"alert"];
+        [push setData: data];
+        [push sendPushInBackground];
     }];
 
     [self.friendLinks addObject: friend];
@@ -122,11 +126,13 @@ static User* theUser = nil;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         for(PFObject *object in objects) {
             [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                
                 PFQuery *pushQuery = [PFInstallation query];
+                PFPush *push = [[PFPush alloc] init];
                 [pushQuery whereKey:@"user" equalTo: [user ident]];
-                NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-                [dic setValue: PUSH_FRIEND_REMOVED forKey:@"command"];
-                [PFPush sendPushDataToQueryInBackground: pushQuery withData: dic];
+                [push setQuery: pushQuery];
+                [push setData: [NSDictionary dictionaryWithObject:PUSH_FRIEND_REMOVED forKey:@"command"]];
+                [push sendPushInBackground];
             }];
         }
     }];
@@ -152,10 +158,9 @@ static User* theUser = nil;
     [query includeKey: USER1];
     [query includeKey: USER2];
     
-    [self.friendLinks removeAllObjects];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
+        [self.friendLinks removeAllObjects];
         for(PFObject *object in objects)
         {
             Friend *friend = [[Friend alloc] initWithPFObject: object forUser: self];

@@ -21,6 +21,12 @@
      UIRemoteNotificationTypeAlert |
      UIRemoteNotificationTypeSound];
     
+    NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+    if(notificationPayload != nil)
+    {
+        //[self application:application didReceiveRemoteNotification:notificationPayload];
+    }
+    
     return YES;
 }
 
@@ -44,6 +50,10 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    if([[User sharedUser] isRegistered])
+        [[User sharedUser] loadFriends:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadFriendsTable" object:nil];
+        }];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -77,23 +87,23 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
     if([[userInfo objectForKey:@"command"] isEqualToString: PUSH_FRIEND_ADDED] ||
        [[userInfo objectForKey:@"command"] isEqualToString: PUSH_FRIEND_APPROVED])
     {
-        UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-        //localNotif.fireDate = nil;
-        localNotif.timeZone = [NSTimeZone defaultTimeZone];
-        
-        // Notification details
-        localNotif.alertBody =  [userInfo objectForKey:@"message"];
-        // Set the action button
-        localNotif.alertAction = @"View";
-        
-        localNotif.soundName = UILocalNotificationDefaultSoundName;
-        localNotif.applicationIconBadgeNumber = 0;
-        
-        // Specify custom data for the notification
-        NSDictionary *infoDict = [NSDictionary dictionaryWithObject:@"someValue" forKey:@"someKey"];
-        localNotif.userInfo = infoDict;
-        
-        [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+//        UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+//        //localNotif.fireDate = nil;
+//        localNotif.timeZone = [NSTimeZone defaultTimeZone];
+//        
+//        // Notification details
+//        localNotif.alertBody =  [userInfo objectForKey:@"message"];
+//        // Set the action button
+//        localNotif.alertAction = @"View";
+//        
+//        localNotif.soundName = UILocalNotificationDefaultSoundName;
+//        localNotif.applicationIconBadgeNumber = 1;
+//        
+//        // Specify custom data for the notification
+//        NSDictionary *infoDict = [NSDictionary dictionaryWithObject:@"someValue" forKey:@"someKey"];
+//        localNotif.userInfo = infoDict;
+//        
+//        [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
         
     }
     
