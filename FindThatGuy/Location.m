@@ -73,11 +73,9 @@
          NSLog(@"Found placemarks: %@", placemarks);
          if (error == nil && [placemarks count] > 0) {
              MKPlacemark *placemark = [placemarks lastObject];
-             self.address = [NSString stringWithFormat:@"%@ %@ %@, %@ %@",
-                                   placemark.thoroughfare,
-                                   placemark.postalCode, placemark.locality,
-                                   placemark.administrativeArea,
-                                   placemark.country];
+             self.address = [NSString stringWithFormat:@"%@", placemark.thoroughfare];
+             self.cityState = [NSString stringWithFormat:@"%@ %@, %@", placemark.postalCode,placemark.locality,placemark.administrativeArea];
+             self.country = [NSString stringWithFormat:@"%@", placemark.country];
          }
          else
          {

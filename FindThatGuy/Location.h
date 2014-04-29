@@ -22,6 +22,8 @@
 @property (nonatomic, retain) NSString* ident;
 @property (nonatomic, retain) User* user;
 @property (nonatomic, retain) NSString* address;
+@property (nonatomic, retain) NSString* cityState;
+@property (nonatomic, retain) NSString* country;
 @property (nonatomic, retain) CLLocation* location;
 
 // define our functions

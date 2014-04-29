@@ -29,6 +29,8 @@
     double constrainedWidth = 200;
     if(self.name.attributedText.size.width > constrainedWidth) constrainedWidth = self.name.attributedText.size.width;
     if(self.address.attributedText.size.width > constrainedWidth) constrainedWidth = self.address.attributedText.size.width;
+    if(self.cityState.attributedText.size.width > constrainedWidth) constrainedWidth = self.cityState.attributedText.size.width;
+
     [self setFrame: CGRectMake(self.frame.origin.x, self.frame.origin.y, constrainedWidth+16, self.frame.size.height) ];
 }
 

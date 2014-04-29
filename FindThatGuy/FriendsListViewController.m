@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = [[User sharedUser] FullName];
+    self.title = [NSString stringWithFormat:@"%@'s Dashboard",[[User sharedUser] FullName]];
     /*[Friend AddFriend:[[User sharedUser] ident] withUser:@"Y1s1Agw6Ej"];
     [Friend AddFriend:[[User sharedUser] ident] withUser:@"e9v2KFuIMr"];
     [Friend AddFriend:[[User sharedUser] ident] withUser:@"d8vBGkdiTj"];*/

@@ -103,6 +103,8 @@ static NSString *viewId = @"MKPinAnnotationView";
         // Change the values on the callout
         [calloutView.name setText: a.title];
         [calloutView.address setText:a.placeInfo.address];
+        [calloutView.cityState setText:a.placeInfo.cityState];
+        [calloutView.country setText:a.placeInfo.country];
         [calloutView.longitude setText: [NSString stringWithFormat:@"%f", a.placeInfo.location.coordinate.longitude]];
         [calloutView.latitude setText: [NSString stringWithFormat:@"%f", a.placeInfo.location.coordinate.latitude]];
         
