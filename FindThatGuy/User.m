@@ -100,7 +100,7 @@ static User* theUser = nil;
         [pushQuery whereKey:@"user" equalTo: [user ident]];
         [push setQuery: pushQuery];
         [data setObject:PUSH_FRIEND_ADDED forKey:@"command"];
-        [data setObject:[NSString stringWithFormat:@"%@ just added you as a friend!", [user FullName]] forKey:@"alert"];
+        [data setObject:[NSString stringWithFormat:@"%@ just added you as a friend!", [self FullName]] forKey:@"alert"];
         [push setData: data];
         [push sendPushInBackground];
     }];

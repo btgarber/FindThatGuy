@@ -58,7 +58,7 @@ static NSString *viewId = @"MKPinAnnotationView";
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
     // Get our Direction Manager Singleton Object
-    DirectionManager *manager = [DirectionManager sharedDirectionManager];
+    //DirectionManager *manager = [DirectionManager sharedDirectionManager];
     
     // Get the reusable annotation view
     MKPinAnnotationView *annotationView = (MKPinAnnotationView*)
